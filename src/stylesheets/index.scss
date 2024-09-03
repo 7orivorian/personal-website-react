@@ -1,0 +1,90 @@
+@import "vars";
+@import "fonts";
+@import "background";
+
+:root {
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flow;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+
+  overflow: hidden;
+}
+
+.centered-container-flex {
+  position: relative;
+  display: flex;
+
+  overflow: hidden;
+
+  text-align: center;
+  justify-content: center;
+
+  margin: 50px auto;
+  padding: 20px;
+
+  min-width: fit-content;
+  max-width: 90%;
+
+  width: fit-content;
+  height: fit-content;
+
+  color: var(--text-color);
+
+  border-radius: 15px;
+  background: var(--bg-color);
+
+  box-shadow: 5px 5px 10px var(--box-shadow-1), -5px -5px 10px var(--box-shadow-2);
+  animation: shadowFadeIn 0.2s;
+
+  &:hover {
+    box-shadow: inset 5px 5px 10px var(--box-shadow-1), inset -5px -5px 10px var(--box-shadow-2);
+    animation: shadowFadeOut 0.2s;
+  }
+
+  & p {
+    width: 90%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@keyframes shadowFadeIn {
+  0% {
+    box-shadow: inset 5px 5px 10px var(--box-shadow-1), inset -5px -5px 10px var(--box-shadow-2);
+  }
+  50% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: 5px 5px 10px var(--box-shadow-1), -5px -5px 10px var(--box-shadow-2);
+  }
+}
+
+@keyframes shadowFadeOut {
+  0% {
+    box-shadow: 5px 5px 10px var(--box-shadow-1), -5px -5px 10px var(--box-shadow-2);
+  }
+  50% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: inset 5px 5px 10px var(--box-shadow-1), inset -5px -5px 10px var(--box-shadow-2);
+  }
+}
