@@ -3,13 +3,19 @@
   --accent-color-75: rgba(153, 13, 53, 75%);
   --accent-color-50: rgba(153, 13, 53, 50%);
   --accent-color-25: rgba(153, 13, 53, 25%);
-  --primary-color: #519e8a;
-  --primary-color-75: rgba(81, 158, 138, 75%);
-  --primary-color-50: rgba(81, 158, 138, 50%);
-  --primary-color-25: rgba(81, 158, 138, 25%);
-  --secondary-color: #b9a394;
-  --text-color: #d4c5c7;
-  --bg-color: #293241;
+
+  --primary-color: rgb(18, 175, 131);
+  --primary-color-75: rgba(8, 175, 131, 75%);
+  --primary-color-50: rgba(8, 175, 131, 50%);
+  --primary-color-25: rgba(8, 175, 131, 25%);
+
+  --secondary-color: rgb(206, 95, 255);
+  --secondary-color-75: rgba(206, 95, 255, 75%);
+  --secondary-color-50: rgba(206, 95, 255, 50%);
+  --secondary-color-25: rgba(206, 95, 255, 25%);
+
+  --text-color: hsl(352, 15%, 70%);
+  --bg-color: hsl(204, 42%, 15%);
   --box-shadow-1: hsl(218, 23%, 17%);
   --box-shadow-2: hsl(218, 23%, 25%);
   --box-shadow-1-hover: hsl(218, 23%, 15%);
