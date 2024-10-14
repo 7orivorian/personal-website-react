@@ -3,13 +3,17 @@ import {createRoot} from 'react-dom/client'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Landing from "./pages/Landing.tsx";
 import ErrorPage from "./pages/ErrorPage.tsx";
-
-import './stylesheets/index.scss'
+import Test from "./pages/Test/Test.tsx";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Landing/>,
+        errorElement: <ErrorPage/>,
+    },
+    {
+        path: "/test",
+        element: <Test/>,
         errorElement: <ErrorPage/>,
     },
 ]);

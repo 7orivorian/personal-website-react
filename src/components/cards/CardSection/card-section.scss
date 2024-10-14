@@ -1,0 +1,18 @@
+#cards {
+  display: grid;
+
+  // Default values if none are specified in the component
+  grid-template-columns: repeat(3, 300px);
+  grid-template-rows: repeat(2, 260px);
+  gap: 10px;
+
+  margin: 20px auto;
+
+  width: fit-content;
+
+  border-radius: 10px;
+
+  &:hover > .card::after {
+    opacity: 1;
+  }
+}

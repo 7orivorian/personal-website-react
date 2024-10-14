@@ -1,0 +1,25 @@
+.card-section-with-text {
+  display: grid;
+
+  grid-template-columns: 1fr 2fr;
+  gap: 10px;
+
+  margin: 20px;
+  padding: 15px;
+
+  border-radius: 10px;
+  border: 2px solid var(--complement-50);
+
+  &:hover > .card::after {
+    opacity: 1;
+  }
+}
+
+.cswt-text {
+  display: flow;
+
+  padding: 1rem;
+
+  color: var(--text);
+}
+

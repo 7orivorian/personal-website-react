@@ -1,0 +1,113 @@
+.angle-card {
+  position: relative;
+  display: flex;
+
+  text-align: center;
+
+  width: 90%;
+  height: 300px;
+
+  padding: 0;
+  margin: 0;
+
+  border: var(--light-accent) 2px solid;
+  border-radius: 25px;
+
+  background-color: var(--bg-color-2);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-clip: padding-box;
+  z-index: 1;
+
+  user-select: none;
+  cursor: pointer;
+
+  transition: all 0.3s 0s ease;
+
+  box-shadow: inset 0 0 10px var(--light-accent);
+  clip-path: polygon(50% 0, 100% 0, 50% 100%, 0% 100%);
+
+  &:hover {
+    box-shadow: inset 0 0 15px var(--light-accent);
+    clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+}
+
+.angle-card-inner {
+  position: relative;
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 25px;
+
+  background-color: rgba(0, 0, 0, 30%);
+
+  transition: all 0.3s 0s ease;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 80%);
+
+    .angle-card-header {
+      margin-top: 15% !important;
+      opacity: 1;
+    }
+
+    .angle-card-text {
+      margin-top: 0 !important;
+      opacity: 1;
+      transition: all 0.3s 0.1s ease !important;
+    }
+  }
+}
+
+.angle-card-text-container {
+  position: relative;
+  display: flow;
+
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 25px;
+}
+
+.angle-card-header {
+  position: relative;
+  display: flex;
+
+  opacity: 0;
+
+  margin-top: -50px !important;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0;
+
+  height: fit-content;
+  width: fit-content;
+
+  color: var(--accent-color);
+  text-shadow: 0 0 10px var(--accent-color);
+
+  transition: all 0.3s 0s ease;
+}
+
+.angle-card-text {
+  position: relative;
+  display: flex;
+
+  opacity: 0;
+
+  margin: 0 auto auto;
+  margin-top: -50px !important;
+
+  width: fit-content;
+  height: fit-content;
+
+  color: var(--light-accent);
+
+  transition: all 0.3s 0s ease;
+}

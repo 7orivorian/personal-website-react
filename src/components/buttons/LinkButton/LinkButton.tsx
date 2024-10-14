@@ -44,10 +44,8 @@ export default function LinkButton({text, clickHandler, color, textTag}: {
             }}
             onClick={(): void => clickHandler()}
         >
-            <span className="top-left"></span>
             <span className="top-left-ghost"></span>
             <span className="top-left-hover-ghost"></span>
-            <span className="bottom-right"></span>
             <span className="bottom-right-ghost"></span>
             <span className="bottom-right-hover-ghost"></span>
             {LinkButtonText}

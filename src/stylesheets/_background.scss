@@ -1,7 +1,13 @@
 :root {
   --img-background: url('../../public/background.jpg');
-  --img-background-inner: url('../../public/background-inner.png');
-  --img-background-center: url('../../public/background-center.png');
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+
+  //background-image: url("../../public/background.jpg");
+  background-color: var(--bg-color);
 }
 
 #background {
@@ -9,12 +15,4 @@
 
   margin: 0;
   place-items: center;
-
-  width: 100vw;
-  height: 100vh;
-
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center center;
 }
