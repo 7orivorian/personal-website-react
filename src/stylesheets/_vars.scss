@@ -1,23 +1,35 @@
 :root {
-  --accent-color: #c6ff00;
-  --accent-color-75: rgba(198, 255, 0, 75%);
-  --accent-color-50: rgba(198, 255, 0, 50%);
-  --accent-color-25: rgba(198, 255, 0, 25%);
+  --text: hsl(230, 31%, 90%);
+  --text-dark: hsl(230, 20%, 50%);
 
-  --light-accent: #e4ffb4;
+  --background: #141726;
+  --background-75: rgba(20, 23, 38, 75%);
+  --background-50: rgba(20, 23, 38, 50%);
+  --background-25: rgba(20, 23, 38, 25%);
+  --background-05: rgba(20, 23, 38, 5%);
 
-  --primary-color: rgb(18, 175, 131);
-  --primary-color-75: rgba(8, 175, 131, 75%);
-  --primary-color-50: rgba(8, 175, 131, 50%);
-  --primary-color-25: rgba(8, 175, 131, 25%);
+  --shadow: #08090D;
+  --shadow-75: rgb(8, 9, 13, 75%);
+  --shadow-50: rgb(8, 9, 13, 50%);
+  --shadow-25: rgb(8, 9, 13, 25%);
 
-  --secondary-color: rgb(206, 95, 255);
-  --secondary-color-75: rgba(206, 95, 255, 75%);
-  --secondary-color-50: rgba(206, 95, 255, 50%);
-  --secondary-color-25: rgba(206, 95, 255, 25%);
+  --accent: #246473;
+  --accent-75: rgba(36, 100, 115, 75%);
+  --accent-50: rgba(36, 100, 115, 50%);
+  --accent-25: rgba(36, 100, 115, 25%);
+  --accent-10: rgba(36, 100, 115, 10%);
+  --accent-05: rgba(36, 100, 115, 5%);
 
-  --text-color: hsl(352, 15%, 70%);
-  --bg-color: hsl(204, 42%, 15%);
-  --bg-color-2: hsl(204, 42%, 10%);
+  --complement: #522073;
+  --complement-75: rgba(82, 32, 115, 75%);
+  --complement-50: rgba(82, 32, 115, 50%);
+  --complement-25: rgba(82, 32, 115, 25%);
+  --complement-10: rgba(82, 32, 115, 10%);
+  --complement-05: rgba(82, 32, 115, 5%);
 
+  --border-radius: 10px;
+
+  --width-breakpoint: 430px;
 }
+
+$width-breakpoint: 700px;

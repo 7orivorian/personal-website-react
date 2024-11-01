@@ -11,7 +11,7 @@
   padding-left: 10px;
   padding-right: 10px;
 
-  background-color: var(--accent-color-25);
+  background-color: var(--accent-25);
 
   cursor: pointer;
   user-select: none;
@@ -32,36 +32,36 @@
   span.top-left-ghost {
     top: -4px;
     left: -4px;
-    border-top: 2px solid var(--accent-color);
-    border-left: 2px solid var(--accent-color);
+    border-top: 2px solid var(--accent);
+    border-left: 2px solid var(--accent);
   }
 
   span.top-left-hover-ghost {
     opacity: 0;
     top: -4px;
     left: -4px;
-    border-top: 2px solid var(--accent-color);
-    border-left: 2px solid var(--accent-color);
+    border-top: 2px solid var(--accent);
+    border-left: 2px solid var(--accent);
   }
 
   span.bottom-right-ghost {
     bottom: -4px;
     right: -4px;
-    border-bottom: 2px solid var(--accent-color);
-    border-right: 2px solid var(--accent-color);
+    border-bottom: 2px solid var(--accent);
+    border-right: 2px solid var(--accent);
   }
 
   span.bottom-right-hover-ghost {
     opacity: 0;
     bottom: -4px;
     right: -4px;
-    border-bottom: 2px solid var(--accent-color);
-    border-right: 2px solid var(--accent-color);
+    border-bottom: 2px solid var(--accent);
+    border-right: 2px solid var(--accent);
   }
 
   &:hover {
-    background-color: var(--accent-color-50);
-    box-shadow: 0 0 5px var(--accent-color-50);
+    background-color: var(--accent-50);
+    box-shadow: 0 0 5px var(--accent-50);
     border-top-right-radius: 15px;
     border-bottom-left-radius: 15px;
 
@@ -89,13 +89,12 @@
   }
 
   &:active {
-    background-color: var(--accent-color-50);
-    box-shadow: 0 0 10px var(--accent-color-75);
+    background-color: var(--accent-50);
+    box-shadow: 0 0 10px var(--accent-75);
     border-top-right-radius: 15px;
     border-bottom-left-radius: 15px;
 
     span {
-
       &.top-left-ghost {
         transform: translate(-4px, -4px);
       }
@@ -117,6 +116,7 @@
 
 .link-button-text {
   margin: 0;
+  color: var(--text);
 }
 
 @keyframes tl-ghost-hover {

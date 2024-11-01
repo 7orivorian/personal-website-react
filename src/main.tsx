@@ -1,9 +1,10 @@
 import {StrictMode} from 'react'
 import {createRoot} from 'react-dom/client'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import Landing from "./pages/Landing.tsx";
-import ErrorPage from "./pages/ErrorPage.tsx";
-import Test from "./pages/Test/Test.tsx";
+import ErrorPage from "./pages/ErrorPage/ErrorPage.tsx";
+import Landing from "./pages/Landing/Landing.tsx";
+import "./stylesheets/index.scss";
+import {Playground} from "./pages/Playground/Playground.tsx";
 
 const router = createBrowserRouter([
     {
@@ -12,8 +13,13 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage/>,
     },
     {
+        path: "/playground",
+        element: <Playground/>,
+        errorElement: <ErrorPage/>,
+    },
+    {
         path: "/test",
-        element: <Test/>,
+        element: <Landing/>,
         errorElement: <ErrorPage/>,
     },
 ]);
@@ -22,4 +28,4 @@ createRoot(document.getElementById('root')!).render(
     <StrictMode>
         <RouterProvider router={router}/>
     </StrictMode>
-)
+);

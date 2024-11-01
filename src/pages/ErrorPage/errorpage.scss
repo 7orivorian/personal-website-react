@@ -1,4 +1,4 @@
-@import "fonts";
+@import "../../stylesheets/fonts";
 
 #error-page {
   align-content: center;
@@ -11,6 +11,8 @@
   margin: 0;
 
   overflow: hidden;
+
+  background-color: var(--background);
 }
 
 #warning-container {
@@ -29,7 +31,6 @@
 
   background: transparent;
   overflow: hidden;
-
 
   box-shadow: none;
 
@@ -66,8 +67,7 @@
   transition: all 0.3s 0s ease-in-out;
 
   &:hover {
-
-    text-shadow: 2px 2px 5px var(--text-color);
+    text-shadow: 2px 2px 5px var(--text);
   }
 }
 

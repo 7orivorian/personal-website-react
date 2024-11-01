@@ -1,4 +1,4 @@
-$border-radius: 10px;
+@import "../../../stylesheets/vars";
 
 .card {
   position: relative;
@@ -7,10 +7,12 @@ $border-radius: 10px;
 
   overflow: hidden;
 
+  margin: auto;
+
   width: 300px;
   height: 260px;
 
-  border-radius: $border-radius;
+  border-radius: var(--border-radius);
   background-color: rgba(255, 255, 255, 0.05);
 
   cursor: pointer;
@@ -18,6 +20,15 @@ $border-radius: 10px;
   transition: all 0.25s ease;
 
   box-shadow: 10px 10px 10px var(--shadow), 1px 1px 10px var(--shadow);
+
+  & {
+    @media (max-width: $width-breakpoint) {
+      .card-text {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
 
   &:hover {
     transform: scale(1.025);
@@ -173,7 +184,7 @@ $border-radius: 10px;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  border-radius: $border-radius;
+  border-radius: var(--border-radius);
 
   filter: blur(3px);
 

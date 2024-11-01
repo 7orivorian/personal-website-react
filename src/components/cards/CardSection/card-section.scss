@@ -1,14 +1,17 @@
 #cards {
-  display: grid;
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
 
-  // Default values if none are specified in the component
-  grid-template-columns: repeat(3, 300px);
-  grid-template-rows: repeat(2, 260px);
+  padding: 15px;
+
   gap: 10px;
 
   margin: 20px auto;
 
-  width: fit-content;
+  width: 100%;
+  max-width: 940px;
+  min-width: 300px;
 
   border-radius: 10px;
 

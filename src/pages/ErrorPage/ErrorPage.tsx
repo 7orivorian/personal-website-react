@@ -1,6 +1,6 @@
+import './errorpage.scss'
 import {NavigateFunction, useNavigate, useRouteError} from "react-router-dom";
-import '../stylesheets/errorpage.scss'
-import LinkButton from "../components/buttons/LinkButton/LinkButton.tsx";
+import Button from "../../components/buttons/Button/Button.tsx";
 
 export default function ErrorPage() {
     // @ts-expect-error ts crying again
@@ -8,7 +8,6 @@ export default function ErrorPage() {
     const navigate: NavigateFunction = useNavigate();
 
     const clickHandler = (): void => {
-        console.log("Clicked");
         navigate("/");
     };
 
@@ -19,7 +18,7 @@ export default function ErrorPage() {
                 <h2 id="error" className="fancy-text">error</h2>
                 <h1 id="status" className="fancy-text">{status}</h1>
                 <h3 id="message">{statusText || message}</h3>
-                <LinkButton text="Home" textTag="h2" color="primary" clickHandler={clickHandler}/>
+                <Button text="Home" clickHandler={clickHandler}/>
             </div>
         </div>
     );

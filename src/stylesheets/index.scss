@@ -3,86 +3,170 @@
 @import "background";
 
 :root {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 
   color-scheme: dark;
-  color: var(--text-color);
-  background-color: var(--bg-color);
+  color: var(--text);
+  background-color: var(--background);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {
-  margin: 0;
-  display: flow;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  overflow: hidden;
+  overflow: hidden auto;
+
+  margin: 0;
+  padding: 0;
+
+  height: 100vh;
+
+  background-color: var(--shadow);
 }
 
-.centered-container-flex {
-  position: relative;
-  display: flex;
+.page-container {
+  display: flow;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0;
+  padding: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+}
+
+.top {
+  display: flow;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  height: 30vh;
+
+  background-color: var(--shadow);
+}
+
+.bottom {
+  display: flow;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+
+  margin: 0;
+  padding: 0;
+  padding-top: 200px;
+
+  width: 100%;
+  bottom: 0;
+
+  border-top-left-radius: 150px;
+  border-top-right-radius: 150px;
+
+  border-top: 5px dashed var(--accent);
+
+  background-color: var(--background);
+}
+
+.bottom-content {
+  display: flow;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+
+  margin: auto;
+
+  width: 50%;
+
+  color: var(--text);
+
+  & {
+    @media (max-width: $width-breakpoint) {
+      width: 90%;
+    }
+  }
+}
+
+a.fancy-link {
+  text-decoration: none;
+  color: var(--accent);
+
+  padding-left: 5px;
+  padding-right: 5px;
+
+  border-radius: 25%;
+  background-color: var(--shadow-25);
+
+  transition: all 0.25s ease;
+
+  cursor: pointer;
 
   overflow: hidden;
-
-  text-align: center;
-  justify-content: center;
-
-  margin: 50px auto;
-  padding: 20px;
-
-  min-width: fit-content;
-  max-width: 90%;
-
-  width: fit-content;
-  height: fit-content;
-
-  color: var(--text-color);
-
-  border-radius: 15px;
-  background: var(--bg-color);
-
-  box-shadow: 5px 5px 10px var(--box-shadow-1), -5px -5px 10px var(--box-shadow-2);
-  animation: shadowFadeIn 0.2s;
 
   &:hover {
-    box-shadow: inset 5px 5px 10px var(--box-shadow-1), inset -5px -5px 10px var(--box-shadow-2);
-    animation: shadowFadeOut 0.2s;
-  }
+    text-shadow: 0 0 15px var(--complement);
+    color: var(--complement);
+    background-color: var(--shadow-50);
+    border-radius: var(--border-radius);
 
-  & p {
-    width: 90%;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    box-shadow: 5px 5px 10px var(--shadow-50), -0px -0px 10px var(--shadow-50);
   }
 }
 
-@keyframes shadowFadeIn {
-  0% {
-    box-shadow: inset 5px 5px 10px var(--box-shadow-1), inset -5px -5px 10px var(--box-shadow-2);
-  }
-  50% {
-    box-shadow: none;
-  }
-  100% {
-    box-shadow: 5px 5px 10px var(--box-shadow-1), -5px -5px 10px var(--box-shadow-2);
+a:not(.fancy-link) {
+  text-decoration: none;
+  color: var(--text);
+
+  padding-left: 5px;
+  padding-right: 5px;
+
+  border-radius: var(--border-radius);
+  background-color: var(--shadow-50);
+
+  transition: all 0.25s ease;
+
+  cursor: pointer;
+
+  &:hover {
+    text-shadow: 0 0 15px var(--complement);
+    color: var(--complement);
+    background-color: var(--shadow-75);
   }
 }
 
-@keyframes shadowFadeOut {
-  0% {
-    box-shadow: 5px 5px 10px var(--box-shadow-1), -5px -5px 10px var(--box-shadow-2);
-  }
-  50% {
-    box-shadow: none;
-  }
-  100% {
-    box-shadow: inset 5px 5px 10px var(--box-shadow-1), inset -5px -5px 10px var(--box-shadow-2);
-  }
+.text-section {
+  display: flow;
+  margin: auto;
+  margin-top: 50px;
+
+  width: 100%;
+  max-width: 920px;
+
+  border-radius: var(--border-radius);
+
+  transition: all 0.25s 0s ease;
+}
+
+.text-section-heading {
+  margin: 5px;
+  margin-top: 0;
+}
+
+.text-section-text {
+  margin: 5px;
+  margin-bottom: 0;
 }

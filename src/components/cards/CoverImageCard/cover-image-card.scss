@@ -1,0 +1,92 @@
+@import "../../../stylesheets/vars";
+
+.ci-card {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+
+  transition: all 0.25s ease;
+
+  padding: 2px;
+
+  width: 300px;
+  max-width: 300px;
+  height: 300px;
+  max-height: 300px;
+
+  background: radial-gradient(
+                  600px circle at var(--mouse-x) var(--mouse-y),
+                  var(--complement),
+                  transparent 40%
+  );
+  border-radius: var(--border-radius);
+
+  box-shadow: 10px 10px 10px var(--shadow), 1px 1px 10px var(--shadow);
+
+  &:hover {
+    transform: scale(1.025);
+    box-shadow: 12px 12px 10px var(--shadow), 1px 1px 10px var(--shadow);
+
+    .ci-card__image {
+      img {
+        scale: 1;
+      }
+    }
+
+    .ci-card__text-container {
+      transform: translateY(-150%);
+    }
+  }
+}
+
+.ci-card__image {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: inherit;
+  transition: inherit;
+
+  img {
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    transition: inherit;
+
+    scale: 0.75;
+  }
+}
+
+.ci-card__text-container {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  transition: inherit;
+
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  transform: translateY(-65px);
+
+  background-color: var(--background-25);
+
+  backdrop-filter: blur(10px);
+
+  border-radius: inherit;
+}
+
+.ci-card-header {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.ci-card-text {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
