@@ -1,0 +1,46 @@
+@import "../../../stylesheets/vars";
+
+.navbar {
+  position: absolute;
+  display: flex;
+
+  overflow: hidden;
+
+  margin-top: 200px;
+  margin-bottom: 0;
+
+  width: 100%;
+
+  & {
+    @media (max-width: $width-breakpoint) {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.navbar-left {
+  position: relative;
+  display: flex;
+  justify-content: right;
+
+  margin: auto;
+
+  width: 50%;
+
+  padding-left: 100px;
+  padding-right: 250px;
+}
+
+.navbar-right {
+  position: relative;
+  display: flex;
+  justify-content: left;
+
+  margin: auto;
+
+  width: 50%;
+
+  padding-left: 250px;
+  padding-right: 100px;
+}

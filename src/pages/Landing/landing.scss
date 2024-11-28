@@ -1,142 +1,9 @@
 @import "../../stylesheets/fonts";
 @import "../../stylesheets/vars";
 
-.text-roller {
-  position: relative;
-  display: flow;
-  align-items: center;
-
-  margin: auto;
-
-  width: fit-content;
-  height: fit-content;
-
-  color: var(--text);
-
-  white-space-collapse: preserve;
-  user-select: none;
-}
-
-.roller-header {
-  text-transform: uppercase;
-  font-size: 4rem;
-}
-
-.roller {
-  position: relative;
-  text-align: center;
-
-  overflow: hidden;
-  text-wrap: nowrap;
-
-  width: fit-content;
-  height: 4.5rem;
-  font-size: 4rem;
-
-  & {
-    @media (max-width: $width-breakpoint) {
-      height: 2.25rem;
-      font-size: 2rem;
-    }
-  }
-}
-
-.phrase {
-  color: var(--accent);
-  animation: textRoll 10s infinite;
-}
-
-@keyframes textRoll {
-  0% {
-    transform: translateY(0);
-  }
-  10% {
-    transform: translateY(0);
-  }
-  20% {
-    transform: translateY(-100%);
-  }
-  30% {
-    transform: translateY(-200%);
-  }
-  40% {
-    transform: translateY(-300%);
-  }
-  50% {
-    transform: translateY(-400%);
-  }
-  90% {
-    transform: translateY(-400%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.profile-image-container {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  left: 50%;
-  translate: -50% 33%;
-
-  margin: auto auto -200px;
-
-  width: 350px;
-  aspect-ratio: 1/1;
-
-  border-radius: 50%;
-  background-color: var(--background);
-
-  & {
-    @media (max-width: $width-breakpoint) {
-      translate: -50% 0%;
-      scale: 0.75;
-    }
-  }
-}
-
-.profile-image {
-  display: block;
-
-  width: 85%;
-  aspect-ratio: 1/1;
-
-  border-radius: inherit;
-  border: 5px solid var(--accent);
-
-  box-shadow: 2px 4px 10px var(--shadow), -0px -0px 10px var(--shadow);
-
-  transition: all 0.25s ease;
-
-  cursor: pointer;
-
-  &:hover {
-    box-shadow: 5px 10px 10px var(--shadow), -0px -0px 10px var(--shadow);
-    transform: translateY(-5px);
-    scale: 1.05;
-  }
-
-  &.do-profile-spin {
-    animation: profile-spin 1s ease;
-  }
-}
-
-@keyframes profile-spin {
-  0% {
-    rotate: 0;
-  }
-  100% {
-    rotate: 360deg;
-  }
-}
-
 .title-container {
   display: flow;
-  margin: auto;
-  margin-top: 50px;
+  margin: 50px auto auto;
 
   width: 100%;
   max-width: 920px;
@@ -148,10 +15,7 @@
 
 .aboutme-container {
   display: flow;
-  margin: auto;
-
-  margin-top: 10px;
-  margin-bottom: 100px;
+  margin: 10px auto 100px;
 
   width: 100%;
   max-width: 920px;

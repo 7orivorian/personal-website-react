@@ -10,7 +10,9 @@
 
   transition: all 0.25s ease;
 
-  padding: 2px;
+  margin: auto;
+
+  //padding: 2px;
 
   width: 300px;
   max-width: 300px;
@@ -22,9 +24,17 @@
                   var(--complement),
                   transparent 40%
   );
+
   border-radius: var(--border-radius);
 
   box-shadow: 10px 10px 10px var(--shadow), 1px 1px 10px var(--shadow);
+
+  .ci-card__text-container {
+    @media (hover: none) {
+      transform: translateY(-150%);
+      background-color: var(--background-35);
+    }
+  }
 
   &:hover {
     transform: scale(1.025);
@@ -32,12 +42,24 @@
 
     .ci-card__image {
       img {
-        scale: 1;
+        scale: 0.98;
       }
     }
 
     .ci-card__text-container {
       transform: translateY(-150%);
+
+      background-color: var(--background-35);
+    }
+
+    &:active {
+      scale: 0.9;
+
+      .ci-card__image {
+        img {
+          scale: 1.15;
+        }
+      }
     }
   }
 }

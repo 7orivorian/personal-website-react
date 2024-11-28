@@ -1,12 +1,20 @@
 :root {
   --text: hsl(230, 31%, 90%);
-  --text-dark: hsl(230, 20%, 50%);
+  --text-dark: hsl(230, 20%, 75%);
+  --text-very-dark: hsl(230, 20%, 50%);
 
   --background: #141726;
   --background-75: rgba(20, 23, 38, 75%);
   --background-50: rgba(20, 23, 38, 50%);
+  --background-35: rgba(20, 23, 38, 35%);
   --background-25: rgba(20, 23, 38, 25%);
   --background-05: rgba(20, 23, 38, 5%);
+
+
+  --background-light: #373f68;
+  --background-light-75: rgba(55, 63, 104, 75%);
+  --background-light-50: rgba(55, 63, 104, 50%);
+  --background-light-25: rgba(55, 63, 104, 25%);
 
   --shadow: #08090D;
   --shadow-75: rgb(8, 9, 13, 75%);
@@ -28,8 +36,13 @@
   --complement-05: rgba(82, 32, 115, 5%);
 
   --border-radius: 10px;
+  --capsule-radius: 500px;
 
   --width-breakpoint: 430px;
+
+  --font-size-large: 0.9rem;
+  --font-size-medium: 0.9rem;
+  --font-size-small: 0.9rem;
 }
 
 $width-breakpoint: 700px;

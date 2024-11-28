@@ -1,0 +1,74 @@
+@import "../../stylesheets/fonts";
+@import "../../stylesheets/vars";
+
+.text-roller {
+  position: relative;
+  display: flow;
+  align-items: center;
+
+  margin: auto;
+
+  width: fit-content;
+  height: fit-content;
+
+  color: var(--text);
+
+  white-space-collapse: preserve;
+  user-select: none;
+}
+
+.roller-header {
+  text-transform: uppercase;
+  font-size: 4rem;
+}
+
+.roller {
+  position: relative;
+  text-align: center;
+
+  overflow: hidden;
+  text-wrap: nowrap;
+
+  width: fit-content;
+  height: 4.5rem;
+  font-size: 4rem;
+
+  & {
+    @media (max-width: $width-breakpoint) {
+      height: 2.25rem;
+      font-size: 2rem;
+    }
+  }
+}
+
+.phrase {
+  color: var(--accent);
+  animation: textRoll 10s infinite;
+}
+
+@keyframes textRoll {
+  0% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-100%);
+  }
+  30% {
+    transform: translateY(-200%);
+  }
+  40% {
+    transform: translateY(-300%);
+  }
+  50% {
+    transform: translateY(-400%);
+  }
+  90% {
+    transform: translateY(-400%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,87 @@
+@import "../../../stylesheets/vars";
+
+.list-card {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+
+  transition: all 0.25s ease;
+
+  margin: auto;
+
+  padding: 2px;
+
+  width: 100%;
+  //max-width: 300px;
+  height: 80px;
+  max-height: 80px;
+
+  background: radial-gradient(
+                  600px circle at var(--mouse-x) var(--mouse-y),
+                  var(--complement),
+                  transparent 40%
+  );
+
+  border-left: 2px solid var(--accent);
+  border-right: 2px solid var(--accent);
+  border-radius: var(--border-radius);
+
+  box-shadow: 5px 5px 10px var(--shadow), 5px 5px 10px var(--shadow);
+
+  &:hover {
+    transform: scale(1.025);
+    border-left-color: var(--complement);
+    border-right-color: var(--complement);
+    box-shadow: 12px 12px 10px var(--shadow), 2px 2px 10px var(--shadow);
+
+    &:active {
+      transform: scale(0.975);
+    }
+  }
+}
+
+.list-card__text-container {
+  position: relative;
+  display: inline-block;
+  text-align: left;
+  transition: inherit;
+
+  margin: auto;
+  width: 80%;
+
+  border-radius: inherit;
+}
+
+.list-card-header {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.list-card-text {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.list-card__svg-container {
+  position: relative;
+  display: flex;
+
+  text-align: left;
+  transition: inherit;
+
+  margin: auto;
+
+  width: 70px;
+  height: 70px;
+
+  border-radius: inherit;
+
+  & svg {
+    margin: auto;
+    width: inherit;
+    height: inherit;
+  }
+}

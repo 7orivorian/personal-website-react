@@ -1,0 +1,133 @@
+@import '../../stylesheets/vars.scss';
+
+.resume-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+
+  width: 100%;
+  height: 100%;
+
+  & {
+    @media (max-width: $width-breakpoint) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}
+
+.resume-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  margin: 0;
+
+  padding: 5px 10px;
+
+  width: 100%;
+
+  border-top: 2px solid var(--accent);
+  border-radius: var(--border-radius);
+
+  background: var(--shadow-50);
+  box-shadow: 0 5px 10px var(--shadow-75);
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-top: 2px solid var(--complement);
+    box-shadow: 0 0 10px var(--complement-75);
+
+    .resume-item__name {
+      color: var(--complement);
+      text-shadow: 0 0 15px var(--complement);
+    }
+
+    &:active {
+      transform: translateY(5px);
+      box-shadow: 0 0 20px var(--complement-75);
+    }
+  }
+}
+
+.resume-item__details {
+  margin-top: 0;
+  margin-bottom: auto;
+}
+
+.resume-item__name {
+  font-size: xx-large;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+  padding: 5px 10px;
+
+  color: var(--text);
+  background: var(--background);
+  border-radius: var(--border-radius);
+
+  transition: all 0.25s ease;
+}
+
+.resume-item__desc {
+  padding: 5px 10px;
+  font-size: large;
+  text-wrap: wrap;
+  color: var(--text-dark);
+}
+
+.resume-item__tags {
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+  font-size: medium;
+
+  .resume-item__tag {
+    padding: 5px 10px;
+    border-radius: var(--border-radius);
+
+    color: var(--text-very-dark);
+    background-color: var(--background-50);
+    border-top: 2px solid var(--background);
+    border-bottom: 2px solid var(--background);
+
+    transition: all 0.25s ease;
+
+    &:hover {
+      color: var(--text-dark);
+      background-color: var(--background-light-50);
+      border-top: 2px solid var(--background-light);
+      border-bottom: 2px solid var(--background-light);
+    }
+  }
+}
+
+.resume-item__date-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+
+  margin-bottom: 0;
+
+  padding: 5px 10px;
+  gap: 5px;
+}
+
+.resume-item__date {
+  font-size: small;
+  color: var(--text-very-dark);
+}
+
+.resume-item__date-sep {
+
+}
+
+.resume-container__footer {
+  height: 50vh;
+}

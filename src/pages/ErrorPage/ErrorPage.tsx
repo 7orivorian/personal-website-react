@@ -1,15 +1,10 @@
 import './errorpage.scss'
-import {NavigateFunction, useNavigate, useRouteError} from "react-router-dom";
-import Button from "../../components/buttons/Button/Button.tsx";
+import {useRouteError} from "react-router-dom";
+import NavItem from "../../components/Navbar/NavItem/NavItem.tsx";
 
 export default function ErrorPage() {
     // @ts-expect-error ts crying again
     const {message, status, statusText}: unknown = useRouteError();
-    const navigate: NavigateFunction = useNavigate();
-
-    const clickHandler = (): void => {
-        navigate("/");
-    };
 
     return (
         <div id="error-page">
@@ -18,7 +13,7 @@ export default function ErrorPage() {
                 <h2 id="error" className="fancy-text">error</h2>
                 <h1 id="status" className="fancy-text">{status}</h1>
                 <h3 id="message">{statusText || message}</h3>
-                <Button text="Home" clickHandler={clickHandler}/>
+                <NavItem to={'/'} text={"Home"}/>
             </div>
         </div>
     );

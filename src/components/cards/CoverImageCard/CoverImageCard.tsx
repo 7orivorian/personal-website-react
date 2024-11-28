@@ -1,6 +1,13 @@
 import "./cover-image-card.scss";
 
-export default function CoverImageCard({header, text, imgUrl, clickHandler}) {
+interface Props {
+    header: string;
+    text: string;
+    imgUrl: string;
+    clickHandler?: () => void;
+}
+
+export default function CoverImageCard({header, text, imgUrl, clickHandler}: Props) {
     return (
         <div className="ci-card" onClick={clickHandler && clickHandler}>
             <div className="ci-card__image">
