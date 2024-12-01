@@ -1,9 +1,6 @@
 @import '../../stylesheets/vars.scss';
 
 .search-container {
-  margin-top: 50px;
-  margin-bottom: 50px;
-
   padding-top: 5px;
   padding-bottom: 5px;
 
@@ -21,8 +18,8 @@
   flex-direction: row;
 
   text-align: left;
-  padding-left: 0px;
-  padding-right: 0px;
+  padding-left: 0;
+  padding-right: 0;
 
   width: 100%;
   height: 50px;
@@ -54,7 +51,7 @@
 
   outline: none;
 
-  color: var(--shadow);
+  color: var(--text-dark);
 
   background-color: var(--accent-25);
   border: 2px solid var(--accent-50);

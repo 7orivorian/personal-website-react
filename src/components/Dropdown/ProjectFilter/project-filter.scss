@@ -1,0 +1,78 @@
+.project-filter {
+  z-index: 1000;
+  position: relative;
+
+  margin-bottom: 50px;
+  padding: 5px 10px;
+
+  font-size: var(--font-size-medium);
+  border-radius: var(--border-radius);
+
+  color: var(--text-dark);
+  background-color: var(--shadow-50);
+  box-shadow: 0 5px 10px var(--shadow-75);
+
+  transition: all 0.25s ease;
+
+  user-select: none;
+
+  .filter-text {
+    color: var(--text);
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+
+    &:hover {
+      color: var(--complement);
+    }
+  }
+
+  .dropdown {
+    z-index: 1000;
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    margin-top: 5px;
+    padding: 0;
+    width: 200px;
+
+    list-style: none;
+    border: none;
+
+    border-radius: var(--border-radius);
+    background: var(--background);
+    box-shadow: 0 4px 6px var(--shadow-50);
+
+    transition: all 0.25s ease;
+
+    .dropdown-option {
+      z-index: 1000;
+
+      padding: 5px 10px;
+
+      color: var(--text-dark);
+
+      cursor: pointer;
+
+      transition: all 0.25s ease;
+
+      &:first-child {
+        border-top: 2px solid var(--accent);
+        border-top-left-radius: var(--border-radius);
+        border-top-right-radius: var(--border-radius);
+      }
+      &:last-child {
+        border-bottom: 2px solid var(--accent);
+        border-bottom-left-radius: var(--border-radius);
+        border-bottom-right-radius: var(--border-radius);
+      }
+
+      &:hover {
+        color: var(--text);
+        background: var(--background-light);
+      }
+    }
+  }
+}

@@ -12,11 +12,12 @@
     "json": "json-server --watch mock-server/db.json"
   },
   "dependencies": {
-    "vite-envs": "^3.5.4",
+    "@headlessui/react": "^2.2.0",
     "dotenv": "^16.4.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.26.1"
+    "react-router-dom": "^6.26.1",
+    "vite-envs": "^3.5.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
