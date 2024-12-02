@@ -1,46 +1,29 @@
 @import "../../../stylesheets/vars";
 
 .navbar {
-  position: absolute;
+  position: relative;
   display: flex;
+  flex-direction: row;
 
   overflow: hidden;
 
-  margin-top: 200px;
-  margin-bottom: 0;
+  margin: 200px auto 0;
 
-  width: 100%;
+  width: 25%;
+  min-width: 200px;
 
   & {
+    @media (max-width: 2060px) {
+      margin: 200px auto 0;
+      width: 50%;
+    }
+    @media (max-width: 1080px) {
+      margin: 200px auto 0;
+      width: 75%;
+    }
     @media (max-width: $width-breakpoint) {
-      margin-top: 0;
-      margin-bottom: 0;
+      margin: 400px auto 0;
+      width: 90%;
     }
   }
-}
-
-.navbar-left {
-  position: relative;
-  display: flex;
-  justify-content: right;
-
-  margin: auto;
-
-  width: 50%;
-
-  padding-left: 100px;
-  padding-right: 250px;
-}
-
-.navbar-right {
-  position: relative;
-  display: flex;
-  justify-content: left;
-
-  margin: auto;
-
-  width: 50%;
-
-  padding-left: 250px;
-  padding-right: 100px;
 }

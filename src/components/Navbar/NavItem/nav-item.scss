@@ -4,6 +4,7 @@
 
   margin: 10px;
   padding: 5px 10px;
+  width: 75px;
 
   background-color: var(--accent-50);
   border-top: 2px solid var(--accent);
@@ -14,6 +15,13 @@
   cursor: pointer;
 
   transition: all 0.25s ease;
+
+  &.right {
+    margin-left: auto;
+  }
+  &:not(.right) {
+    margin-right: auto;
+  }
 
   &:hover {
     background-color: var(--accent-25);
