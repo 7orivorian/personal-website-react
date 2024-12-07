@@ -4,4 +4,10 @@
 .links-content-container {
   all: inherit;
   width: 600px;
+
+  & {
+    @media (max-width: $width-breakpoint) {
+      width: 100%;
+    }
+  }
 }
