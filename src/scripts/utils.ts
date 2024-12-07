@@ -40,3 +40,12 @@ export function capitalizeFirstLetter(str: string): string {
 export function isSpecialEmpty(arr: string[]): boolean {
     return arr.filter(item => item !== '').length === 0;
 }
+
+export function formatDateToYYYYMMDD(dateString: string): string {
+    const date = new Date(dateString);
+    const year: number = date.getFullYear();
+    const month: string = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+    const day: string = String(date.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+}
