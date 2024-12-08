@@ -11,6 +11,7 @@ import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary.tsx";
 import Navbar from "../components/Navbar/Navbar/Navbar.tsx";
 import Resume from "../pages/Resume/Resume.tsx";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop.tsx";
+import Auth from "../pages/auth/Auth.tsx";
 
 export default function App() {
     const contentWidth = 1200;
@@ -119,6 +120,7 @@ export default function App() {
                             <Route path='/links' element={<Links/>}/>
                             <Route path='/playground' element={<Playground/>}/>
                             <Route path='/resume' element={<Resume/>}/>
+                            <Route path='/auth' element={<Auth/>}/>
                             <Route path='*' element={<ErrorPage/>}/>
                         </Routes>
                         <ScrollToTop/>

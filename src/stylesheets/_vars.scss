@@ -17,9 +17,9 @@
   --background-light-25: rgba(55, 63, 104, 25%);
 
   --shadow: #08090D;
-  --shadow-75: rgb(8, 9, 13, 75%);
-  --shadow-50: rgb(8, 9, 13, 50%);
-  --shadow-25: rgb(8, 9, 13, 25%);
+  --shadow-75: rgba(8, 9, 13, 75%);
+  --shadow-50: rgba(8, 9, 13, 50%);
+  --shadow-25: rgba(8, 9, 13, 25%);
 
   --accent: #246473;
   --accent-75: rgba(36, 100, 115, 75%);
@@ -34,6 +34,11 @@
   --complement-25: rgba(82, 32, 115, 25%);
   --complement-10: rgba(82, 32, 115, 10%);
   --complement-05: rgba(82, 32, 115, 5%);
+
+  --error: #ff4500;
+  --error-75: rgba(255, 69, 0, 75%);
+  --error-50: rgba(255, 69, 0, 50%);
+  --error-25: rgba(255, 69, 0, 25%);
 
   --border-radius: 10px;
   --capsule-radius: 500px;

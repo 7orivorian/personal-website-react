@@ -1,0 +1,96 @@
+$form-width: 500px;
+
+.auth-form {
+  padding: 50px 100px;
+
+  width: $form-width;
+  height: 600px;
+
+  transition: inherit;
+
+  h1 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-align: center;
+
+    transition: inherit;
+
+    user-select: none;
+  }
+
+  .input-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    width: 100%;
+    height: 80px;
+    transition: inherit;
+  }
+
+  label {
+    color: var(--text-dark);
+
+    font-size: var(--font-size-medium);
+    transition: inherit;
+
+    user-select: none;
+
+    &.invisible {
+      opacity: 0;
+    }
+  }
+
+  input {
+    height: 50px;
+
+    outline: none;
+
+    font-size: var(--font-size-large);
+
+    border-radius: var(--border-radius);
+
+    color: var(--text-dark);
+    background-color: var(--accent-25);
+    border: 2px solid var(--accent-50);
+    box-shadow: 0 0 5px var(--accent-75);
+
+    transition: inherit;
+
+    &.error {
+      color: var(--shadow);
+      background-color: var(--error-25);
+      border: 2px solid var(--error-50);
+      box-shadow: 0 0 5px var(--error-75);
+    }
+    &:hover {
+      color: var(--text);
+      background-color: var(--complement-25);
+      box-shadow: 0 0 10px var(--complement-75);
+      border: 2px solid var(--complement);
+    }
+
+    &:focus, &:active {
+      color: var(--text);
+      background-color: var(--complement-25);
+      box-shadow: 0 0 20px var(--complement-75);
+      border: 2px solid var(--complement);
+    }
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    transition: inherit;
+    cursor: pointer;
+  }
+
+  span.error {
+    color: var(--error);
+    font-size: var(--font-size-small);
+    transition: inherit;
+  }
+}

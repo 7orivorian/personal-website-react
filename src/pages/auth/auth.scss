@@ -1,0 +1,77 @@
+$form-width: 500px;
+$container-height: 700px;
+
+.auth-form-container {
+  position: relative;
+
+  margin: 50px auto auto;
+  padding-bottom: 50px;
+
+  width: $form-width;
+  height: $container-height;
+
+  border-radius: var(--border-radius);
+  background-color: var(--shadow-50);
+  box-shadow: 0 5px 10px var(--shadow-75);
+  border-top: 5px solid var(--accent);
+
+  transition: all 0.25s ease;
+
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: 0 10px 15px var(--shadow-75);
+    border-top: 5px solid var(--complement);
+  }
+}
+
+.carrier {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+
+  height: fit-content;
+
+  overflow: hidden;
+
+  transition: all 0.25s ease;
+
+  &.register {
+    transform: translateX(-$form-width);
+  }
+}
+
+.form-toggle {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  text-align: center;
+
+  margin: auto;
+
+  width: 300px;
+
+  font-size: var(--font-size-small);
+
+  padding: 5px 10px;
+  border-radius: var(--border-radius);
+
+  color: var(--text-very-dark);
+  background-color: var(--background-50);
+  border-top: 2px solid var(--background);
+  border-bottom: 2px solid var(--background);
+
+  transition: all 0.25s ease;
+
+  cursor: pointer;
+  user-select: none;
+
+  &:hover, &.selected {
+    color: var(--text-dark);
+    background-color: var(--background-light-50);
+    border-top: 2px solid var(--background-light);
+    border-bottom: 2px solid var(--background-light);
+  }
+}
