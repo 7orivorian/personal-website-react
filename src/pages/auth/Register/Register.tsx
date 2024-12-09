@@ -45,13 +45,13 @@ export default function Register() {
     return (
         <form className="auth-form" onSubmit={handleSubmit(onSubmit)}>
             <h1>Register</h1>
-            <EmailInput register={register} errors={errors}/>
-            <UsernameInput register={register} errors={errors}/>
-            <PasswordInput register={register} errors={errors} autoComplete={"new-password"}/>
+            <EmailInput id={"register-email"} register={register} errors={errors}/>
+            <UsernameInput id="register-username" register={register} errors={errors}/>
+            <PasswordInput id="register-password" register={register} errors={errors} autoComplete={"new-password"}/>
 
             <div className="input-container">
-                <label htmlFor="passwordConfirm">Confirm Password</label>
-                <input id="passwordConfirm"
+                <label htmlFor="password-confirm">Confirm Password</label>
+                <input id="password-confirm"
                        autoComplete="new-password"
                        className={errors.passwordConfirm ? "error" : ""}
                        {...register("passwordConfirm", {required: true})}
@@ -61,8 +61,8 @@ export default function Register() {
             </div>
 
             <div className="input-container">
-                <label className="invisible" htmlFor="submit">Register</label>
-                <input id="submit" type="submit"/>
+                <label className="invisible" htmlFor="register">Register</label>
+                <input id="register" type="submit"/>
             </div>
         </form>
     );

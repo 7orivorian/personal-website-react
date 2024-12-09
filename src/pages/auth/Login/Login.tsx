@@ -29,8 +29,8 @@ export default function Login() {
     return (
         <form className="auth-form" onSubmit={handleSubmit(onSubmit)}>
             <h1>Login</h1>
-            <UsernameInput register={register} errors={errors}/>
-            <PasswordInput register={register} errors={errors} autoComplete={"current-password"}/>
+            <UsernameInput id={"login-username"} register={register} errors={errors}/>
+            <PasswordInput id={"login-password"} register={register} errors={errors} autoComplete={"current-password"}/>
 
             <div className="input-container">
                 <label className="invisible" htmlFor="submit">Register</label>

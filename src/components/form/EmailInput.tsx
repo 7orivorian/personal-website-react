@@ -1,13 +1,14 @@
 import {EMAIL_REGEX} from "../../scripts/utils.ts";
 
-export default function EmailInput({register, errors}: {
+export default function EmailInput({id, register, errors}: {
+    id: string;
     register: any;
     errors: any;
 }) {
     return (
         <div className="input-container">
-            <label htmlFor="email">Email</label>
-            <input id="email"
+            <label htmlFor={id}>Email</label>
+            <input id={id}
                    autoComplete="email"
                    className={errors.email ? "error" : ""}
                    {...register("email", {

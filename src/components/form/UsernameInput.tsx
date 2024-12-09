@@ -1,11 +1,12 @@
-export default function UsernameInput({register, errors}: {
+export default function UsernameInput({id, register, errors}: {
+    id: string;
     register: any;
     errors: any;
 }) {
     return (
         <div className="input-container">
-            <label htmlFor="username">Username</label>
-            <input id="username"
+            <label htmlFor={id}>Username</label>
+            <input id={id}
                    autoComplete="username"
                    className={errors.username ? "error" : ""}
                    {...register("username", {

@@ -1,12 +1,13 @@
-export default function PasswordInput({register, errors, autoComplete}: {
+export default function PasswordInput({id, register, errors, autoComplete}: {
+    id: string;
     register: any;
     errors: any;
     autoComplete: string;
 }) {
     return (
         <div className="input-container">
-            <label htmlFor="password">Password</label>
-            <input id="password"
+            <label htmlFor={id}>Password</label>
+            <input id={id}
                    autoComplete={autoComplete}
                    className={errors.password ? "error" : ""}
                    {...register("password", {
