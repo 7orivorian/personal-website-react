@@ -12,6 +12,7 @@ import Navbar from "../components/Navbar/Navbar/Navbar.tsx";
 import Resume from "../pages/Resume/Resume.tsx";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop.tsx";
 import Auth from "../pages/auth/Auth.tsx";
+import {UserProvider} from "../contexts/UserContext.tsx";
 
 export default function App() {
     const contentWidth = 1200;
@@ -96,38 +97,40 @@ export default function App() {
 
     return (
         <ErrorBoundary>
-            <div className="page-container" ref={pageContainerRef}>
-                <div className="top">
-                    <TextRoller phrases={[
-                        "a developer",
-                        "a designer",
-                        "cat obsessed",
-                        "completely sane",
-                        "7orivorian",
-                    ]}/>
-                    <Navbar/>
-                </div>
-                <div className="bottom">
-                    <div className="profile-image-container">
-                        <img className={`profile-image ${isProfileImgAnimating ? "do-profile-spin" : ""}`}
-                             src="../../public/images/profile_img_placeholder.jpg" alt="profile_img"
-                             onDoubleClick={profileClickHandler}
-                        />
+            <UserProvider>
+                <div className="page-container" ref={pageContainerRef}>
+                    <div className="top">
+                        <TextRoller phrases={[
+                            "a developer",
+                            "a designer",
+                            "cat obsessed",
+                            "completely sane",
+                            "7orivorian",
+                        ]}/>
+                        <Navbar/>
                     </div>
-                    <div className="bottom-content">
-                        <Routes>
-                            <Route path='/' element={<Landing/>}/>
-                            <Route path='/links' element={<Links/>}/>
-                            <Route path='/playground' element={<Playground/>}/>
-                            <Route path='/resume' element={<Resume/>}/>
-                            <Route path='/auth' element={<Auth/>}/>
-                            <Route path='*' element={<ErrorPage/>}/>
-                        </Routes>
-                        <ScrollToTop/>
+                    <div className="bottom">
+                        <div className="profile-image-container">
+                            <img className={`profile-image ${isProfileImgAnimating ? "do-profile-spin" : ""}`}
+                                 src="../../public/images/profile_img_placeholder.jpg" alt="profile_img"
+                                 onDoubleClick={profileClickHandler}
+                            />
+                        </div>
+                        <div className="bottom-content">
+                            <Routes>
+                                <Route path='/' element={<Landing/>}/>
+                                <Route path='/links' element={<Links/>}/>
+                                <Route path='/playground' element={<Playground/>}/>
+                                <Route path='/resume' element={<Resume/>}/>
+                                <Route path='/auth' element={<Auth/>}/>
+                                <Route path='*' element={<ErrorPage/>}/>
+                            </Routes>
+                            <ScrollToTop/>
+                        </div>
+                        <Footer/>
                     </div>
-                    <Footer/>
                 </div>
-            </div>
+            </UserProvider>
         </ErrorBoundary>
     );
 }

@@ -2,29 +2,27 @@ import "../auth-form.scss";
 import {SubmitHandler, useForm} from "react-hook-form";
 import UsernameInput from "../../../components/form/UsernameInput.tsx";
 import PasswordInput from "../../../components/form/PasswordInput.tsx";
+import {useUser} from "../../../contexts/UserContext.tsx";
+import {useNavigate} from "react-router-dom";
 
 export default function Login() {
+    const {login} = useUser();
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
         formState: {errors},
-    } = useForm<Inputs>()
+    } = useForm<Inputs>();
 
     const onSubmit: SubmitHandler<Inputs> = (data: Inputs): void => {
-
-        fetch(`${import.meta.env.VITE_API_URL}/users/login`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        }).then(res => {
-            //TODO: impl token storage
-            return res.json();
-        }).catch(err => {
-            console.error(err);
+        login(data.username, data.password).then((message: string | null) => {
+            if (message) {
+                alert(message);
+                return;
+            }
+            navigate('/');
         });
-    }
+    };
 
     return (
         <form className="auth-form" onSubmit={handleSubmit(onSubmit)}>
@@ -43,4 +41,4 @@ export default function Login() {
 type Inputs = {
     username: string
     password: string
-}
+};
