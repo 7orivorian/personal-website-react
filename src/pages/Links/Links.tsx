@@ -12,6 +12,7 @@ import OnlyFansIcon from "../../components/icon/OnlyFansIcon.tsx";
 import MailIcon from "../../components/icon/material/MailIcon.tsx";
 import {fetchSocialLinks, SocialLinkData} from "../../scripts/fetchers.ts";
 import ErrorIcon from "../../components/icon/material/ErrorIcon.tsx";
+import {Suspense} from "react";
 
 const resource = fetchSocialLinks();
 
@@ -23,26 +24,38 @@ export default function Links() {
                     <h1 className="title">Heya! I'm <a className="fancy-link">7orivorian</a>...</h1>
                 </div>
                 <div className="aboutme-container">
-                    <p className="aboutme">
-                        Here are all my official links!
-                    </p>
+                    <p className="aboutme">Here are all my official links!</p>
                 </div>
             </FadeInSection>
 
-            <LinkSection/>
+            <Suspense fallback={<></>}>
+                <LinkSection/>
+            </Suspense>
+
+            <div className="links__footer"></div>
         </div>
     );
 }
 
 function LinkSection() {
-    const data = resource.read();
+    const data: any = resource.read();
+
+    if (!data) {
+        return (
+            <FadeInSection>
+                <p>No links found!</p>
+            </FadeInSection>
+        );
+    }
 
     return (
         <FadeInSection>
             <CardSection>
                 {data.map((item: SocialLinkData) => {
                     return (
-                        <ListCard key={item.name} header={item.name} text={item.description}
+                        <ListCard key={item.name}
+                                  header={item.name}
+                                  text={item.description}
                                   clickHandler={() => handleUrlClick(item.url)}>
                             {getIconComponentByName(item.icon)}
                         </ListCard>

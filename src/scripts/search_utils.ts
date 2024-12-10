@@ -13,6 +13,9 @@ import {isSpecialEmpty} from "./utils.ts";
  * @returns {ProjectData[]} - A filtered array of projects matching the query and search filter.
  */
 export function filterProjects(projects: ProjectData[], searchTerms: string[], searchFilter: string): ProjectData[] {
+    if (!projects) {
+        return [];
+    }
     // If the query is empty, return the full project list
     if (isSpecialEmpty(searchTerms)) {
         return projects;
@@ -55,16 +58,16 @@ export function compareProjects(a: ProjectData, b: ProjectData): number {
         return 1;
     }
 
-    // Compare endDate if both are present
-    if (a.endDate && b.endDate) {
-        return new Date(a.endDate).getTime() - new Date(b.endDate).getTime();
+    // Compare completionDate if both are present
+    if (a.completionDate && b.completionDate) {
+        return new Date(a.completionDate).getTime() - new Date(b.completionDate).getTime();
     }
 
-    // If one has endDate and the other doesn't, prioritize the one with endDate
-    if (a.endDate && !b.endDate) {
+    // If one has completionDate and the other doesn't, prioritize the one with completionDate
+    if (a.completionDate && !b.completionDate) {
         return -1;
     }
-    if (!a.endDate && b.endDate) {
+    if (!a.completionDate && b.completionDate) {
         return 1;
     }
 
