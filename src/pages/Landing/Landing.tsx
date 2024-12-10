@@ -12,7 +12,7 @@ export default function Landing() {
         <>
             <FadeInSection>
                 <div className="title-container">
-                    <h1 className="title">Heya! I'm <a className="fancy-link">7orivorian</a>...</h1>
+                    <h1 className="title">Heya! I'm <a className="fancy-link">{import.meta.env.VITE_MYNAME}</a>...</h1>
                 </div>
                 <div className="aboutme-container">
                     <p className="aboutme">

@@ -105,7 +105,7 @@ export default function App() {
                             "a designer",
                             "cat obsessed",
                             "completely sane",
-                            "7orivorian",
+                            `${import.meta.env.VITE_MYNAME}`,
                         ]}/>
                         <Navbar/>
                     </div>
