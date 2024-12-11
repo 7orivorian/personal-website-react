@@ -36,7 +36,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({children}: UserProvid
     const [token, setToken] = useState(localStorage.getItem("token") || "");
 
 
-    function storeToken(token: string) {
+    function storeToken(token: string): void {
         localStorage.setItem("token", token);
         setToken(token);
     }

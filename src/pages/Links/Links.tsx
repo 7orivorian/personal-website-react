@@ -10,11 +10,9 @@ import BSkyIcon from "../../components/icon/BSkyIcon.tsx";
 import ThreadsIcon from "../../components/icon/ThreadsIcon.tsx";
 import OnlyFansIcon from "../../components/icon/OnlyFansIcon.tsx";
 import MailIcon from "../../components/icon/material/MailIcon.tsx";
-import {fetchSocialLinks, SocialLinkData} from "../../scripts/fetchers.ts";
 import ErrorIcon from "../../components/icon/material/ErrorIcon.tsx";
-import {Suspense} from "react";
-
-const resource = fetchSocialLinks();
+import {useData} from "../../contexts/DataContext.tsx";
+import {SocialLinkData} from "../../scripts/types.ts";
 
 export default function Links() {
     return (
@@ -28,9 +26,7 @@ export default function Links() {
                 </div>
             </FadeInSection>
 
-            <Suspense fallback={<></>}>
-                <LinkSection/>
-            </Suspense>
+            <LinkSection/>
 
             <div className="links__footer"></div>
         </div>
@@ -38,12 +34,12 @@ export default function Links() {
 }
 
 function LinkSection() {
-    const data: any = resource.read();
+    const {socialLinks} = useData();
 
-    if (!data) {
+    if (!socialLinks) {
         return (
             <FadeInSection>
-                <p>No links found!</p>
+                <p>No links found :(</p>
             </FadeInSection>
         );
     }
@@ -51,7 +47,7 @@ function LinkSection() {
     return (
         <FadeInSection>
             <CardSection>
-                {data.map((item: SocialLinkData) => {
+                {socialLinks.map((item: SocialLinkData) => {
                     return (
                         <ListCard key={item.name}
                                   header={item.name}

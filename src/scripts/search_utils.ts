@@ -1,5 +1,5 @@
-import {ProjectData} from "./fetchers.ts";
 import {isSpecialEmpty} from "./utils.ts";
+import {ProjectData} from "./types.ts";
 
 
 /**
@@ -12,7 +12,7 @@ import {isSpecialEmpty} from "./utils.ts";
  *        - "ALL" matches projects with all terms in `tags` or `techStack`.
  * @returns {ProjectData[]} - A filtered array of projects matching the query and search filter.
  */
-export function filterProjects(projects: ProjectData[], searchTerms: string[], searchFilter: string): ProjectData[] {
+export function filterProjects(projects: ProjectData[] | null | undefined, searchTerms: string[], searchFilter: string): ProjectData[] {
     if (!projects) {
         return [];
     }

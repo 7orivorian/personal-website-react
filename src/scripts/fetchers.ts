@@ -1,7 +1,7 @@
-import wrapPromise from "./api/wrapPromise.ts";
 import {formatDateToYYYYMMDD} from "./utils.ts";
+import {ProjectData, SocialLinkData} from "./types.ts";
 
-export function fetchProjects() {
+export function fetchProjects(): Promise<ProjectData[]> {
     const mapToProjectData = (jsonData: any[]): ProjectData[] => {
         return jsonData.map((item) => ({
             id: item.id,
@@ -10,8 +10,8 @@ export function fetchProjects() {
             description: item.description,
             url: item.url,
             image: item.image,
-            tags: item.tags,
-            techStack: item.tech_stack,
+            tags: item.tags.map((tag: any) => tag.name),
+            techStack: item.tags.filter((tag: any) => tag.is_tech).map((tag: any) => tag.name),
             sourceCode: item.source_code,
             beginDate: formatDateToYYYYMMDD(item.begin_date),
             completionDate: item.completion_date === null ? null : formatDateToYYYYMMDD(item.completion_date),
@@ -21,23 +21,23 @@ export function fetchProjects() {
         }));
     };
 
-    const promise: Promise<void | ProjectData[]> =
-        fetchApi("/projects")
-            .then((response: Response) => response.json())
-            .then((json): ProjectData[] => mapToProjectData(json))
-            .catch(error => console.error(error));
-
-    return wrapPromise(promise);
+    return fetchApi("/projects")
+        .then((response: Response) => response.json())
+        .then((json): ProjectData[] => mapToProjectData(json))
+        .catch(error => {
+            console.error(error);
+            return [];
+        });
 }
 
-export function fetchSocialLinks() {
-    const promise: Promise<void | SocialLinkData[]> =
-        fetchApi("/sociallinks")
-            .then((response: Response) => response.json())
-            .then((json): SocialLinkData[] => json)
-            .catch(error => console.error(error));
-
-    return wrapPromise(promise);
+export function fetchSocialLinks(): Promise<SocialLinkData[]> {
+    return fetchApi("/sociallinks")
+        .then((response: Response) => response.json())
+        .then((json): SocialLinkData[] => json)
+        .catch(error => {
+            console.error(error);
+            return [];
+        });
 }
 
 export function fetchApi(endpoint: string, options: any = undefined): Promise<Response> {
@@ -46,29 +46,4 @@ export function fetchApi(endpoint: string, options: any = undefined): Promise<Re
 
 function getApiUrl(): string {
     return import.meta.env.VITE_API_URL;
-}
-
-export interface ProjectData {
-    id: number;
-    slug: string;
-    name: string;
-    description: string;
-    url: string;
-    image: string;
-    tags: string[];
-    techStack: string[];
-    sourceCode: string;
-    beginDate: string;
-    completionDate: string | null;
-    type: string;
-    status: string;
-    featured: boolean;
-}
-
-export interface SocialLinkData {
-    id: number;
-    name: string;
-    description: string;
-    url: string;
-    icon: string;
 }

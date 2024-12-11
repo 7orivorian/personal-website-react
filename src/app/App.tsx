@@ -13,9 +13,10 @@ import Resume from "../pages/Resume/Resume.tsx";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop.tsx";
 import Auth from "../pages/auth/Auth.tsx";
 import {UserProvider} from "../contexts/UserContext.tsx";
+import {DataProvider} from "../contexts/DataContext.tsx";
 
 export default function App() {
-    const contentWidth = 1200;
+    const contentWidth: string = "1200px";
 
     const [isProfileImgAnimating, setIsProfileImgAnimating] = useState(false);
 
@@ -30,7 +31,7 @@ export default function App() {
         // @ts-expect-error is not null
         const content = pageContainerRef.current.querySelector('.bottom-content');
         if (content) {
-            content.style.setProperty("--content-width", `${contentWidth}px`);
+            content.style.setProperty("--content-width", contentWidth);
         }
 
         if (isMobileDevice()) {
@@ -98,38 +99,40 @@ export default function App() {
     return (
         <ErrorBoundary>
             <UserProvider>
-                <div className="page-container" ref={pageContainerRef}>
-                    <div className="top">
-                        <TextRoller phrases={[
-                            "a developer",
-                            "a designer",
-                            "cat obsessed",
-                            "completely sane",
-                            `${import.meta.env.VITE_MYNAME}`,
-                        ]}/>
-                        <Navbar/>
-                    </div>
-                    <div className="bottom">
-                        <div className="profile-image-container">
-                            <img className={`profile-image ${isProfileImgAnimating ? "do-profile-spin" : ""}`}
-                                 src="../../public/images/profile_img_placeholder.jpg" alt="profile_img"
-                                 onDoubleClick={profileClickHandler}
-                            />
+                <DataProvider>
+                    <div className="page-container" ref={pageContainerRef}>
+                        <div className="top">
+                            <TextRoller phrases={[
+                                "a developer",
+                                "a designer",
+                                "cat obsessed",
+                                "completely sane",
+                                `${import.meta.env.VITE_MYNAME}`,
+                            ]}/>
+                            <Navbar/>
                         </div>
-                        <div className="bottom-content">
-                            <Routes>
-                                <Route path='/' element={<Landing/>}/>
-                                <Route path='/links' element={<Links/>}/>
-                                <Route path='/playground' element={<Playground/>}/>
-                                <Route path='/resume' element={<Resume/>}/>
-                                <Route path='/auth' element={<Auth/>}/>
-                                <Route path='*' element={<ErrorPage/>}/>
-                            </Routes>
-                            <ScrollToTop/>
+                        <div className="bottom">
+                            <div className="profile-image-container">
+                                <img className={`profile-image ${isProfileImgAnimating ? "do-profile-spin" : ""}`}
+                                     src="../../public/images/profile_img_placeholder.jpg" alt="profile_img"
+                                     onDoubleClick={profileClickHandler}
+                                />
+                            </div>
+                            <div className="bottom-content">
+                                <Routes>
+                                    <Route path='/' element={<Landing/>}/>
+                                    <Route path='/links' element={<Links/>}/>
+                                    <Route path='/playground' element={<Playground/>}/>
+                                    <Route path='/resume' element={<Resume/>}/>
+                                    <Route path='/auth' element={<Auth/>}/>
+                                    <Route path='*' element={<ErrorPage/>}/>
+                                </Routes>
+                                <ScrollToTop/>
+                            </div>
+                            <Footer/>
                         </div>
-                        <Footer/>
                     </div>
-                </div>
+                </DataProvider>
             </UserProvider>
         </ErrorBoundary>
     );

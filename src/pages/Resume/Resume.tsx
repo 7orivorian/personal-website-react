@@ -1,5 +1,5 @@
 import "./resume.scss";
-import {Suspense, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {useSearchParams} from "react-router-dom";
 import SearchBar from "../../components/SearchBar/SearchBar.tsx";
 import FadeInSection from "../../components/FadeInSection/FadeInSection.tsx";
@@ -46,14 +46,11 @@ export default function Resume() {
                 <ProjectFilter filterOptions={["ANY", "ALL"]}
                                onFilterChange={(option: string): void => setSearchFilter(option)}/>
 
-                <Suspense fallback={<p className="resume-container__empty">What have we here?? A skill I don't possess!
-                    Nonsense...</p>}>
-                    <ResumeItemList
-                        searchTerms={searchTerms}
-                        searchFilter={searchFilter}
-                        handleTagClick={handleTagClick}
-                    />
-                </Suspense>
+                <ResumeItemList
+                    searchTerms={searchTerms}
+                    searchFilter={searchFilter}
+                    handleTagClick={handleTagClick}
+                />
             </FadeInSection>
             <div className="resume-container__footer"></div>
         </>

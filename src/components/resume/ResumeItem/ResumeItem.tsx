@@ -1,9 +1,9 @@
 import "./resume-item.scss";
-import {ProjectData} from "../../../scripts/fetchers.ts";
 import {useState} from "react";
 import {capitalizeFirstLetter, handleUrlClick} from "../../../scripts/utils.ts";
 import OpenInNewIcon from "../../icon/material/OpenInNewIcon.tsx";
 import {getMatchingTags} from "../../../scripts/search_utils.ts";
+import {ProjectData} from "../../../scripts/types.ts";
 
 export default function ResumeItem({project, searchTerms, handleTagClick}: {
     project: ProjectData;
