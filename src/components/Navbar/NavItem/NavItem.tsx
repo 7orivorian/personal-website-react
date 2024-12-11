@@ -11,10 +11,8 @@ interface Props {
 
 export default function NavItem({to, text, target = "_self", rel = "noopener noreferrer", right = false}: Props) {
     return (
-        <div className={`nav-item ${right ? "right" : ""}`}>
-            <Link className="nav-link" to={to} target={target} rel={rel}>
-                {text}
-            </Link>
-        </div>
+        <Link className={`nav-link ${right ? "right" : ""}`} to={to} target={target} rel={rel}>
+            {text}
+        </Link>
     );
 }
