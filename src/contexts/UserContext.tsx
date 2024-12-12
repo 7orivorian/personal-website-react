@@ -12,7 +12,7 @@ export type UserDetails = {
 
 export interface UserContextData {
     user: UserDetails | null;
-    login: (email: string, password: string) => Promise<string | null>;
+    login: (username: string, password: string) => Promise<string | null>;
     logout: () => Promise<string | null>;
     fetchWithAuth: (url: string, options: any) => Promise<any>;
 }
@@ -41,14 +41,14 @@ export const UserProvider: React.FC<UserProviderProps> = ({children}: UserProvid
         setToken(token);
     }
 
-    const login = (email: string, password: string): Promise<string | null> => {
+    const login = (username: string, password: string): Promise<string | null> => {
         return fetch(`${import.meta.env.VITE_API_URL}/users/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             credentials: "include",
-            body: JSON.stringify({email, password})
+            body: JSON.stringify({username, password})
         }).then(res => {
             return res.json().then(json => {
                 if (!res.ok) {
@@ -107,7 +107,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({children}: UserProvid
                 throw Error(json.message || json.error || "Network response was not ok")
             });
         })
-    }
+    };
 
     return (
         <UserContext.Provider value={{user, login, logout, fetchWithAuth}}>
