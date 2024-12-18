@@ -19,6 +19,7 @@ export interface UserContextData {
     login: (username: string, password: string) => Promise<string | null>;
     logout: () => Promise<string | null>;
     fetchWithAuth: (endpoint: string, options?: any) => Promise<any>;
+    isAuthenticated: () => boolean;
 }
 
 // Create a context with null as its default value
@@ -35,6 +36,9 @@ const UserContext = createContext<UserContextData>({
     },
     fetchWithAuth: () => {
         return new Promise(() => null);
+    },
+    isAuthenticated: () => {
+        return false;
     }
 });
 
@@ -62,8 +66,10 @@ export const UserProvider: React.FC<UserProviderProps> = ({children}: UserProvid
             email: userData.email,
             admin: userData.is_admin || userData.admin
         });
+        if (json.csrf_refresh_token) {
+            setRefreshToken(json.csrf_refresh_token);
+        }
         setAccessToken(json.csrf_access_token);
-        setRefreshToken(json.csrf_refresh_token);
     }
 
     const register = async (username: string, password: string, email: string, admin: boolean): Promise<string | null> => {
@@ -78,7 +84,8 @@ export const UserProvider: React.FC<UserProviderProps> = ({children}: UserProvid
                     username: username,
                     password: password,
                     is_admin: admin,
-                })
+                }),
+                credentials: "include"
             });
             if (res.status === 201) {
                 return await login(username, password);
@@ -138,21 +145,24 @@ export const UserProvider: React.FC<UserProviderProps> = ({children}: UserProvid
     };
 
     const refreshAccessToken = async (): Promise<boolean> => {
+        if (!refreshToken) {
+            return false;
+        }
         try {
             const res: Response = await fetch(`${getApiUrl()}/users/refresh`, {
                 method: "POST",
-                headers: refreshToken ? {
+                headers: {
                     "Content-Type": "application/json",
                     "X-CSRF-TOKEN": refreshToken
-                } : {
-                    "Content-Type": "application/json"
                 },
                 credentials: "include"
             });
             if (res.ok) {
-                await res.json().then((json: any) => store(json.user));
+                const json: any = await res.json();
+                store(json)
                 return true;
             }
+            store();
             return false;
         } catch (err) {
             store();
@@ -174,30 +184,31 @@ export const UserProvider: React.FC<UserProviderProps> = ({children}: UserProvid
             if (res.ok) {
                 return res.json();
             } else if (res.status === 401 && refresh) {
+                console.log("Access token expired, attempting to refresh");
                 if (await refreshAccessToken()) {
                     return fetchWithAuth(endpoint, options, false);
                 }
-                return "Failed to refresh token";
-
+                return res;
             }
-            const json: any = await res.json();
-            return json?.message || json?.error || "Network response was not ok";
+            return res;
         } catch (err) {
             console.error(err);
             return err;
         }
     };
 
+    const isAuthenticated = (): boolean => {
+        return user !== null && accessToken !== null;
+    }
+
     useEffect(() => {
-        if (user && refreshToken) {
+        if (!user || !accessToken) {
             refreshAccessToken();
-        } else {
-            store();
         }
     });
 
     return (
-        <UserContext.Provider value={{user, register, login, logout, fetchWithAuth}}>
+        <UserContext.Provider value={{user, register, login, logout, fetchWithAuth, isAuthenticated}}>
             {children}
         </UserContext.Provider>
     );

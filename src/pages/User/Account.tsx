@@ -4,16 +4,16 @@ import FadeInSection from "../../components/FadeInSection/FadeInSection.tsx";
 import {useNavigate} from "react-router-dom";
 
 export default function Account() {
-    const {user, fetchWithAuth} = useUser();
+    const {user, fetchWithAuth, isAuthenticated} = useUser();
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!user) {
+        if (!isAuthenticated()) {
             navigate("/auth?type=login");
             return;
         }
-        fetchWithAuth(`users/${user?.id}`).then((res) => console.log(res.ok ? "yes" : "no"));
-    }, [fetchWithAuth, navigate, user]);
+        fetchWithAuth(`test/secured/ping`).then((res) => console.log(res));
+    }, [fetchWithAuth, isAuthenticated, navigate]);
 
     return (
         <>
