@@ -24,7 +24,7 @@
 
   border-radius: var(--border-radius);
   color: var(--text-very-dark);
-  background-color: var(--shadow);
+  background-color: var(--background-dark);
 
   transition: all 0.25s ease;
 
@@ -35,6 +35,6 @@
 
   &:hover {
     color: var(--text-dark);
-    background-color: var(--background-light);
+    background-color: var(--foreground);
   }
 }

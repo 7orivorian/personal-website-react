@@ -1,0 +1,20 @@
+.project-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  border-radius: var(--border-radius);
+  background-color: var(--background-dark-50);
+  box-shadow: 0 5px 10px var(--background-dark-75);
+  border-top: 5px solid var(--accent);
+
+  overflow: visible;
+
+  transition: all 0.25s ease;
+
+  &:hover {
+    box-shadow: 0 10px 15px var(--background-dark-75);
+    border-top: 5px solid var(--complement);
+  }
+}

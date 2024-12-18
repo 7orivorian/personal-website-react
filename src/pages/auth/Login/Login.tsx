@@ -15,30 +15,30 @@ export default function Login() {
     } = useForm<Inputs>();
 
     const onSubmit: SubmitHandler<Inputs> = (data: Inputs): void => {
-        login(data.username, data.password).then((message: string | null) => {
-            if (message) {
-                alert(message);
+        login(data.loginUsername, data.loginPassword).then((error: string | null) => {
+            if (error) {
+                alert(error);
                 return;
             }
-            navigate('/');
+            navigate('/account');
         });
     };
 
     return (
         <form className="auth-form" onSubmit={handleSubmit(onSubmit)}>
             <h1>Login</h1>
-            <UsernameInput id={"login-username"} register={register} errors={errors}/>
-            <PasswordInput id={"login-password"} register={register} errors={errors} autoComplete={"current-password"}/>
+            <UsernameInput id={"loginUsername"} label={"Username"} register={register} errors={errors}/>
+            <PasswordInput id={"loginPassword"} label={"Password"} autoComplete={"current-password"} register={register} errors={errors}/>
 
             <div className="input-container">
                 <label className="invisible" htmlFor="submit">Register</label>
-                <input id="submit" type="submit"/>
+                <input id="submit" className="auth-input" type="submit" value="Login"/>
             </div>
         </form>
     );
 }
 
 type Inputs = {
-    username: string
-    password: string
+    loginUsername: string
+    loginPassword: string
 };

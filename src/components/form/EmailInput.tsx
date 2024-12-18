@@ -6,7 +6,7 @@ export default function EmailInput({id, register, errors}: {
     errors: any;
 }) {
     return (
-        <div className="input-container">
+        <div className="input-container auth-input email-input">
             <label htmlFor={id}>Email</label>
             <input id={id}
                    autoComplete="email"

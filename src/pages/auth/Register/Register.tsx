@@ -4,9 +4,14 @@ import {useState} from "react";
 import EmailInput from "../../../components/form/EmailInput.tsx";
 import UsernameInput from "../../../components/form/UsernameInput.tsx";
 import PasswordInput from "../../../components/form/PasswordInput.tsx";
+import BooleanInput from "../../../components/form/BooleanInput.tsx";
+import {useNavigate} from "react-router-dom";
+import {useUser} from "../../../contexts/UserContext.tsx";
 
 export default function Register() {
     const [passwordError, setPasswordError] = useState("" as string | null);
+    const navigate = useNavigate();
+    const {register: registerUser} = useUser()
 
     const {
         register,
@@ -21,35 +26,25 @@ export default function Register() {
         }
         setPasswordError(null);
 
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const {passwordConfirm, ...filteredData} = data;
-
-        fetch(`${import.meta.env.VITE_API_URL}/users`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(filteredData)
-        }).then(res => {
-            if (res.status === 201) {
-                return res.json();
+        registerUser(data.username, data.password, data.email, data.admin).then((error: string | null): string | null => {
+            if (error) {
+                navigate('/auth?type=login');
+                alert(error);
+                return error;
             }
-            throw new Error("Failed to register");
-        }).catch(err => {
-            //TODO: inform the user of what went wrong (email/username taken etc.)
-            console.error(err);
-            alert("Failed to register");
-        });
+            navigate('/');
+            return null;
+        })
     }
 
     return (
         <form className="auth-form" onSubmit={handleSubmit(onSubmit)}>
             <h1>Register</h1>
-            <EmailInput id={"register-email"} register={register} errors={errors}/>
-            <UsernameInput id="register-username" register={register} errors={errors}/>
-            <PasswordInput id="register-password" register={register} errors={errors} autoComplete={"new-password"}/>
-
-            <div className="input-container">
+            <EmailInput id={"email"} register={register} errors={errors}/>
+            <UsernameInput id="username" label={"Username"} register={register} errors={errors}/>
+            <PasswordInput id="password" label={"Password"} autoComplete={"new-password"} register={register}
+                           errors={errors}/>
+            <div className="input-container auth-input password-input">
                 <label htmlFor="password-confirm">Confirm Password</label>
                 <input id="password-confirm"
                        autoComplete="new-password"
@@ -59,18 +54,21 @@ export default function Register() {
                 {(errors.passwordConfirm && <span className="error">{errors.passwordConfirm.message}</span>)
                     || (passwordError && <span className="error">{passwordError}</span>)}
             </div>
+            <BooleanInput classPrefix={"auth-form"} id="admin" label={"Admin"} checked={false} register={register}
+                          errors={errors}/>
 
-            <div className="input-container">
+            <div className="input-container auth-input">
                 <label className="invisible" htmlFor="register">Register</label>
-                <input id="register" type="submit"/>
+                <input id="register" className="auth-input" type="submit" value="Register"/>
             </div>
         </form>
     );
 }
 
 type Inputs = {
-    email: string
-    username: string
-    password: string
-    passwordConfirm: string
+    email: string;
+    username: string;
+    password: string;
+    passwordConfirm: string;
+    admin: boolean;
 }

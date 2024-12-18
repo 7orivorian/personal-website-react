@@ -11,8 +11,8 @@ $container-height: 700px;
   height: $container-height;
 
   border-radius: var(--border-radius);
-  background-color: var(--shadow-50);
-  box-shadow: 0 5px 10px var(--shadow-75);
+  background-color: var(--background-dark-50);
+  box-shadow: 0 5px 10px var(--background-dark-75);
   border-top: 5px solid var(--accent);
 
   transition: all 0.25s ease;
@@ -20,7 +20,7 @@ $container-height: 700px;
   overflow: hidden;
 
   &:hover {
-    box-shadow: 0 10px 15px var(--shadow-75);
+    box-shadow: 0 10px 15px var(--background-dark-75);
     border-top: 5px solid var(--complement);
   }
 }
@@ -59,9 +59,9 @@ $container-height: 700px;
   border-radius: var(--border-radius);
 
   color: var(--text-very-dark);
-  background-color: var(--background-50);
-  border-top: 2px solid var(--background);
-  border-bottom: 2px solid var(--background);
+  background-color: var(--background-light-50);
+  border-top: 2px solid var(--background-light);
+  border-bottom: 2px solid var(--background-light);
 
   transition: all 0.25s ease;
 
@@ -70,8 +70,8 @@ $container-height: 700px;
 
   &:hover, &.selected {
     color: var(--text-dark);
-    background-color: var(--background-light-50);
-    border-top: 2px solid var(--background-light);
-    border-bottom: 2px solid var(--background-light);
+    background-color: var(--foreground-50);
+    border-top: 2px solid var(--foreground);
+    border-bottom: 2px solid var(--foreground);
   }
 }

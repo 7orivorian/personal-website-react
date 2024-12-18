@@ -13,7 +13,9 @@ import Resume from "../pages/Resume/Resume.tsx";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop.tsx";
 import Auth from "../pages/auth/Auth.tsx";
 import {UserProvider} from "../contexts/UserContext.tsx";
+import Admin from "../pages/Admin/Admin.tsx";
 import {DataProvider} from "../contexts/DataContext.tsx";
+import Account from "../pages/User/Account.tsx";
 
 export default function App() {
     const contentWidth: string = "1200px";
@@ -125,6 +127,8 @@ export default function App() {
                                     <Route path='/playground' element={<Playground/>}/>
                                     <Route path='/resume' element={<Resume/>}/>
                                     <Route path='/auth' element={<Auth/>}/>
+                                    <Route path='/admin' element={<Admin/>}/>
+                                    <Route path='/account' element={<Account/>}/>
                                     <Route path='*' element={<ErrorPage/>}/>
                                 </Routes>
                                 <ScrollToTop/>

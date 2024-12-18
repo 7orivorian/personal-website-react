@@ -1,16 +1,17 @@
-export default function PasswordInput({id, register, errors, autoComplete}: {
+export default function PasswordInput({id, label, autoComplete, register, errors}: {
     id: string;
+    label: string;
+    autoComplete: string;
     register: any;
     errors: any;
-    autoComplete: string;
 }) {
     return (
-        <div className="input-container">
-            <label htmlFor={id}>Password</label>
+        <div className="input-container auth-input password-input">
+            <label htmlFor={id}>{label}</label>
             <input id={id}
                    autoComplete={autoComplete}
-                   className={errors.password ? "error" : ""}
-                   {...register("password", {
+                   className={errors[id] ? "error" : ""}
+                   {...register(`${id}`, {
                        required: true,
                        minLength: {
                            value: 16,
@@ -22,7 +23,7 @@ export default function PasswordInput({id, register, errors, autoComplete}: {
                        }
                    })}
             />
-            {errors.password && <span className="error">{errors.password.message}</span>}
+            {errors[id] && <span className="error">{errors[id].message}</span>}
         </div>
     );
 }

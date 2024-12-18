@@ -1,6 +1,6 @@
 import React, {createContext, ReactNode, useContext, useEffect, useState} from 'react';
-import {fetchProjects, fetchSocialLinks} from "../scripts/fetchers.ts";
-import {ProjectData, SocialLinkData} from "../scripts/types.ts";
+import {fetchProjects, fetchSocialLinks, fetchTags} from "../scripts/fetchers.ts";
+import {ProjectData, SocialLinkData, TagData} from "../scripts/types.ts";
 
 type ProviderProps = {
     children: ReactNode;
@@ -8,25 +8,29 @@ type ProviderProps = {
 
 type DataContextType = {
     projects: ProjectData[];
+    tags: TagData[];
     socialLinks: SocialLinkData[];
 }
 
 const DataContext = createContext<DataContextType>({
     projects: [],
+    tags: [],
     socialLinks: [],
 });
 
 export const DataProvider: React.FC<ProviderProps> = ({children}) => {
     const [projects, setProjects] = useState<ProjectData[]>([]);
+    const [tags, setTags] = useState<TagData[]>([])
     const [socialLinks, setSocialLinks] = useState<SocialLinkData[]>([]);
 
     useEffect(() => {
         fetchProjects().then(setProjects);
+        fetchTags().then(setTags);
         fetchSocialLinks().then(setSocialLinks);
-    }, [])
+    }, []);
 
     return (
-        <DataContext.Provider value={{projects, socialLinks}}>
+        <DataContext.Provider value={{projects, tags, socialLinks}}>
             {children}
         </DataContext.Provider>
     );

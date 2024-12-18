@@ -62,7 +62,7 @@ $form-width: 500px;
     transition: inherit;
 
     &.error {
-      color: var(--shadow);
+      color: var(--background-dark);
       background-color: var(--error-25);
       border: 2px solid var(--error-50);
       box-shadow: 0 0 5px var(--error-75);

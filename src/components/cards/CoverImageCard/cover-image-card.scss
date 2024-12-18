@@ -27,18 +27,18 @@
 
   border-radius: var(--border-radius);
 
-  box-shadow: 10px 10px 10px var(--shadow), 1px 1px 10px var(--shadow);
+  box-shadow: 10px 10px 10px var(--background-dark), 1px 1px 10px var(--background-dark);
 
   .ci-card__text-container {
     @media (hover: none) {
       transform: translateY(-150%);
-      background-color: var(--background-35);
+      background-color: var(--background-light-35);
     }
   }
 
   &:hover {
     transform: scale(1.025);
-    box-shadow: 12px 12px 10px var(--shadow), 1px 1px 10px var(--shadow);
+    box-shadow: 12px 12px 10px var(--background-dark), 1px 1px 10px var(--background-dark);
 
     .ci-card__image {
       img {
@@ -49,7 +49,7 @@
     .ci-card__text-container {
       transform: translateY(-150%);
 
-      background-color: var(--background-35);
+      background-color: var(--background-light-35);
     }
 
     &:active {
@@ -96,7 +96,7 @@
   width: 90%;
   transform: translateY(-65px);
 
-  background-color: var(--background-25);
+  background-color: var(--background-light-25);
 
   backdrop-filter: blur(10px);
 

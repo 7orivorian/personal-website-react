@@ -12,8 +12,8 @@
   border-top: 2px solid var(--accent);
   border-radius: var(--border-radius);
 
-  background: var(--shadow-50);
-  box-shadow: 0 5px 10px var(--shadow-75);
+  background: var(--background-dark-50);
+  box-shadow: 0 5px 10px var(--background-dark-75);
 
   cursor: pointer;
 
@@ -59,22 +59,22 @@
   border: none;
 
   color: var(--text-dark);
-  background-color: var(--background);
+  background-color: var(--background-light);
 
   cursor: pointer;
   user-select: none;
   transition: all 0.25s ease;
 
   &.left {
-    border-top: 2px solid var(--background-light);
-    border-bottom: 2px solid var(--background-light);
+    border-top: 2px solid var(--foreground);
+    border-bottom: 2px solid var(--foreground);
     border-top-left-radius: var(--border-radius);
     border-bottom-left-radius: var(--border-radius);
   }
 
   &.right {
-    border-top: 2px solid var(--background-light);
-    border-bottom: 2px solid var(--background-light);
+    border-top: 2px solid var(--foreground);
+    border-bottom: 2px solid var(--foreground);
     border-top-right-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
   }
@@ -85,7 +85,7 @@
 
   &:hover, &.selected {
     color: var(--text-dark);
-    background-color: var(--background-light-50);
+    background-color: var(--foreground-50);
   }
 }
 
@@ -100,7 +100,7 @@
 
   width: 100%;
 
-  background: var(--background);
+  background: var(--background-light);
   border-radius: var(--border-radius);
 
   transition: all 0.25s ease;
@@ -149,17 +149,17 @@
     border-radius: var(--border-radius);
 
     color: var(--text-very-dark);
-    background-color: var(--background-50);
-    border-top: 2px solid var(--background);
-    border-bottom: 2px solid var(--background);
+    background-color: var(--background-light-50);
+    border-top: 2px solid var(--background-light);
+    border-bottom: 2px solid var(--background-light);
 
     transition: all 0.25s ease;
 
     &:hover, &.selected {
       color: var(--text-dark);
-      background-color: var(--background-light-50);
-      border-top: 2px solid var(--background-light);
-      border-bottom: 2px solid var(--background-light);
+      background-color: var(--foreground-50);
+      border-top: 2px solid var(--foreground);
+      border-bottom: 2px solid var(--foreground);
     }
   }
 }

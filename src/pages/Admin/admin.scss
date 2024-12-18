@@ -1,0 +1,16 @@
+.project-form__input-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  text-align: left;
+  align-self: center;
+
+  font-size: var(--font-size-medium);
+
+  margin: 10px auto;
+
+  width: 50%;
+
+  //overflow: hidden;
+}

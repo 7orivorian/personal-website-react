@@ -1,6 +1,7 @@
 @import "vars";
 @import "fonts";
 @import "background";
+@import "inputs";
 
 :root {
   font-family: "Rajdhani", sans-serif;
@@ -9,7 +10,7 @@
 
   color-scheme: dark;
   color: var(--text);
-  background-color: var(--background);
+  background-color: var(--background-light);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -18,9 +19,11 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-* {
-  box-sizing: border-box;
-  -webkit-user-drag: none;
+*,
+*::before,
+*::after {
+  box-sizing: border-box !important;
+  -webkit-user-drag: none !important;
 }
 
 body {
@@ -35,7 +38,7 @@ body {
 
   height: 100vh;
 
-  background-color: var(--shadow);
+  background-color: var(--background-dark);
 }
 
 a.fancy-link {
@@ -46,7 +49,7 @@ a.fancy-link {
   padding-right: 5px;
 
   border-radius: 25%;
-  background-color: var(--shadow-25);
+  background-color: var(--background-dark-25);
 
   transition: all 0.25s ease;
 
@@ -57,10 +60,10 @@ a.fancy-link {
   &:hover {
     text-shadow: 0 0 15px var(--complement);
     color: var(--complement);
-    background-color: var(--shadow-50);
+    background-color: var(--background-dark-50);
     border-radius: var(--border-radius);
 
-    box-shadow: 5px 5px 10px var(--shadow-50), -0px -0px 10px var(--shadow-50);
+    box-shadow: 5px 5px 10px var(--background-dark-50), -0px -0px 10px var(--background-dark-50);
   }
 }
 
@@ -72,7 +75,7 @@ a:not(.fancy-link) {
   padding-right: 5px;
 
   border-radius: var(--border-radius);
-  background-color: var(--shadow-50);
+  background-color: var(--background-dark-50);
 
   transition: all 0.25s ease;
 
@@ -81,7 +84,7 @@ a:not(.fancy-link) {
   &:hover {
     text-shadow: 0 0 15px var(--complement);
     color: var(--complement);
-    background-color: var(--shadow-75);
+    background-color: var(--background-dark-75);
   }
 }
 
@@ -155,7 +158,7 @@ a:not(.fancy-link) {
 
   border-top: 5px dashed var(--accent);
 
-  background-color: var(--background);
+  background-color: var(--background-light);
 }
 
 .bottom-content {
@@ -192,7 +195,7 @@ a:not(.fancy-link) {
   aspect-ratio: 1/1;
 
   border-radius: 50%;
-  background-color: var(--background);
+  background-color: var(--background-light);
 
   & {
     @media (max-width: $width-breakpoint) {
@@ -210,14 +213,14 @@ a:not(.fancy-link) {
   border-radius: inherit;
   border: 5px solid var(--accent);
 
-  box-shadow: 2px 4px 10px var(--shadow), -0px -0px 10px var(--shadow);
+  box-shadow: 2px 4px 10px var(--background-dark), -0px -0px 10px var(--background-dark);
 
   transition: all 0.25s ease;
 
   cursor: pointer;
 
   &:hover {
-    box-shadow: 5px 10px 10px var(--shadow), -0px -0px 10px var(--shadow);
+    box-shadow: 5px 10px 10px var(--background-dark), -0px -0px 10px var(--background-dark);
     transform: translateY(-5px);
     scale: 1.05;
   }
@@ -238,4 +241,8 @@ a:not(.fancy-link) {
 
 svg {
   fill: currentColor;
+}
+
+.transparent {
+  opacity: 0;
 }

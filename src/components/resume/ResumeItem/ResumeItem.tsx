@@ -3,7 +3,7 @@ import {useState} from "react";
 import {capitalizeFirstLetter, handleUrlClick} from "../../../scripts/utils.ts";
 import OpenInNewIcon from "../../icon/material/OpenInNewIcon.tsx";
 import {getMatchingTags} from "../../../scripts/search_utils.ts";
-import {ProjectData} from "../../../scripts/types.ts";
+import {ProjectData, TagData} from "../../../scripts/types.ts";
 
 export default function ResumeItem({project, searchTerms, handleTagClick}: {
     project: ProjectData;
@@ -32,32 +32,17 @@ export default function ResumeItem({project, searchTerms, handleTagClick}: {
                         onClick={(): void => setTagsSelected(false)}>Tech
                     </button>
                 </div>
-                <p className="resume-item__tags">
-                    {
-                        tagsSelected ? project.tags.map((tag: string) => {
-                            const highlight: boolean = getMatchingTags(project.tags, searchTerms).includes(tag);
-                            return (
-                                <ItemTag key={tag} tag={tag} highlight={highlight}
-                                         clickHandler={(e: MouseEvent): void => handleTagClick(e, tag)}/>
-                            );
-                        }) : project.techStack.map((tech: string) => {
-                            const highlight: boolean = getMatchingTags(project.techStack, searchTerms).includes(tech);
-                            return (
-                                <ItemTag key={tech} tag={tech} highlight={highlight}
-                                         clickHandler={(e: MouseEvent): void => handleTagClick(e, tech)}/>
-                            );
-                        })
-                    }
-                </p>
+                <TagList tags={tagsSelected ? project.tags : project.tech} searchTerms={searchTerms}
+                         handleTagClick={handleTagClick}/>
             </div>
             <div className="resume-item__minor-details">
                 <>
                     <p className="resume-item__project-type resume-item__date">{capitalizeFirstLetter(project.type)}</p>
                     <div className="resume-item__date-container">
-                        <p className="resume-item__begin-date resume-item__date">{project.beginDate}</p>
+                        <p className="resume-item__begin-date resume-item__date">{project.begin_date}</p>
                         <p className="resume-item__date-sep resume-item__date">—</p>
-                        {project.completionDate ? (
-                            <p className="resume-item__end-date resume-item__date">{project.completionDate}</p>
+                        {project.completion_date ? (
+                            <p className="resume-item__end-date resume-item__date">{project.completion_date}</p>
                         ) : (
                             <p className="resume-item__end-date resume-item__date">{project.status}</p>
                         )}
@@ -68,16 +53,36 @@ export default function ResumeItem({project, searchTerms, handleTagClick}: {
     );
 }
 
+function TagList({tags, searchTerms, handleTagClick}: {
+    tags: TagData[];
+    searchTerms: string[];
+    handleTagClick: (e: MouseEvent, query: string) => void;
+}) {
+    const matchingTags: TagData[] = getMatchingTags(tags, searchTerms);
+    return (
+        <p className="resume-item__tags">
+            {
+                tags.map((tag: TagData) => {
+                    const highlight: boolean = matchingTags.includes(tag);
+                    return (
+                        <ItemTag key={tag.id} tag={tag} highlight={highlight}
+                                 clickHandler={(e: MouseEvent): void => handleTagClick(e, tag.name)}/>
+                    );
+                })
+            }
+        </p>
+    );
+}
+
 function ItemTag({tag, highlight, clickHandler}: {
-    tag: string,
+    tag: TagData,
     highlight: boolean,
-    clickHandler: (e: MouseEvent, tag: string) => void
+    clickHandler: (e: MouseEvent, tagName: string) => void
 }) {
     return (
         <span
             className={`resume-item__tag ${highlight ? "selected" : ""}`}
-            key={tag}
-            onClick={(e: any): void => clickHandler(e, tag)}>{tag}
+            onClick={(e: any): void => clickHandler(e, tag.name)}>{tag.name}
         </span>
     );
 }

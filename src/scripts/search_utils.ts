@@ -1,5 +1,5 @@
 import {isSpecialEmpty} from "./utils.ts";
-import {ProjectData} from "./types.ts";
+import {ProjectData, TagData} from "./types.ts";
 
 
 /**
@@ -23,7 +23,7 @@ export function filterProjects(projects: ProjectData[] | null | undefined, searc
     // If the query is non-empty, proceed to filter projects
     return projects.filter((project: ProjectData): boolean => {
         const tagsLength: number = getMatchingTags(project.tags, searchTerms).length;
-        const techLength: number = getMatchingTags(project.techStack, searchTerms).length;
+        const techLength: number = getMatchingTags(project.tech, searchTerms).length;
         switch (searchFilter) {
             case "ANY":
                 return tagsLength + techLength > 0;
@@ -35,18 +35,18 @@ export function filterProjects(projects: ProjectData[] | null | undefined, searc
     });
 }
 
-export function getMatchingTags(tags: string[], terms: string[]): string[] {
-    return tags.filter((tag: string): boolean =>
+export function getMatchingTags(tags: TagData[], terms: string[]): TagData[] {
+    return tags.filter((tag: TagData): boolean =>
         terms.filter((item: string): boolean => item !== '')
             .some((term: string): boolean => tagMatchesTerm(tag, term)));
 }
 
-export function tagMatchesTerm(tag: string, term: string): boolean {
-    const tg: string = tag.toLowerCase();
+export function tagMatchesTerm(tag: TagData, term: string): boolean {
+    const name: string = tag.name.toLowerCase();
     // Check if the term matches the tag, excluding "javascript" for "java"
-    return (tg.startsWith(term) && !(tg === "javascript" && term === "java"))
-        || (tg === "javascript" && term === "js")
-        || (tg === "typescript" && term === "ts");
+    return (name.startsWith(term) && !(name === "javascript" && term === "java"))
+        || (name === "javascript" && term === "js")
+        || (name === "typescript" && term === "ts");
 }
 
 export function compareProjects(a: ProjectData, b: ProjectData): number {
@@ -59,18 +59,18 @@ export function compareProjects(a: ProjectData, b: ProjectData): number {
     }
 
     // Compare completionDate if both are present
-    if (a.completionDate && b.completionDate) {
-        return new Date(a.completionDate).getTime() - new Date(b.completionDate).getTime();
+    if (a.completion_date && b.completion_date) {
+        return new Date(a.completion_date).getTime() - new Date(b.completion_date).getTime();
     }
 
     // If one has completionDate and the other doesn't, prioritize the one with completionDate
-    if (a.completionDate && !b.completionDate) {
+    if (a.completion_date && !b.completion_date) {
         return -1;
     }
-    if (!a.completionDate && b.completionDate) {
+    if (!a.completion_date && b.completion_date) {
         return 1;
     }
 
     // Fallback to beginDate comparison
-    return new Date(a.beginDate).getTime() - new Date(b.beginDate).getTime();
+    return new Date(a.begin_date).getTime() - new Date(b.begin_date).getTime();
 }

@@ -9,8 +9,8 @@
   border-radius: var(--border-radius);
 
   color: var(--text-dark);
-  background-color: var(--shadow-50);
-  box-shadow: 0 5px 10px var(--shadow-75);
+  background-color: var(--background-dark-50);
+  box-shadow: 0 5px 10px var(--background-dark-75);
 
   transition: all 0.25s ease;
 
@@ -42,8 +42,8 @@
     border: none;
 
     border-radius: var(--border-radius);
-    background: var(--background);
-    box-shadow: 0 4px 6px var(--shadow-50);
+    background: var(--background-light);
+    box-shadow: 0 4px 6px var(--background-dark-50);
 
     transition: all 0.25s ease;
 
@@ -71,7 +71,7 @@
 
       &:hover {
         color: var(--text);
-        background: var(--background-light);
+        background: var(--foreground);
       }
     }
   }

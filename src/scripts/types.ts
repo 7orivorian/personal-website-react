@@ -4,16 +4,26 @@ export type ProjectData = {
     name: string;
     description: string;
     url: string;
-    image: string;
-    tags: string[];
-    techStack: string[];
-    sourceCode: string;
-    beginDate: string;
-    completionDate: string | null;
+    image_url: string;
+    source_code_url: string;
     type: string;
     status: string;
     featured: boolean;
+    begin_date: string;
+    completion_date: string | null;
+    tags: TagData[];
+    tech: TagData[];
+    created_at: string;
+    updated_at: string;
 };
+
+export type TagData = {
+    id: number;
+    name: string;
+    is_tech: boolean;
+    created_at: string;
+    updated_at: string;
+}
 
 export type SocialLinkData = {
     id: number;
@@ -21,4 +31,9 @@ export type SocialLinkData = {
     description: string;
     url: string;
     icon: string;
+};
+
+export type Option = {
+    label: string;
+    value: string;
 };
