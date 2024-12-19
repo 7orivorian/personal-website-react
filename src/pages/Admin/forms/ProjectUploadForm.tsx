@@ -160,13 +160,6 @@ export default function ProjectUploadForm({tagOptions, techOptions}: {
                                        errors={errors}
                                        control={control}
             />
-            <TextInput classPrefix={"hidden"}
-                       id={"na"}
-                       label={"na"}
-                       required={false}
-                       register={register}
-                       errors={errors}
-            />
 
             <div className="project-form__input-container">
                 <label className="transparent" htmlFor="submit">Upload Project</label>
