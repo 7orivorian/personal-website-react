@@ -20,6 +20,7 @@ export interface UserContextData {
     logout: () => Promise<string | null>;
     fetchWithAuth: (endpoint: string, options?: any) => Promise<any>;
     isAuthenticated: () => boolean;
+    isAdmin: () => boolean;
 }
 
 // Create a context with null as its default value
@@ -38,6 +39,9 @@ const UserContext = createContext<UserContextData>({
         return new Promise(() => null);
     },
     isAuthenticated: () => {
+        return false;
+    },
+    isAdmin: () => {
         return false;
     }
 });
@@ -182,7 +186,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({children}: UserProvid
                 credentials: "include"
             });
             if (res.ok) {
-                return res.json();
+                return res;
             } else if (res.status === 401 && refresh) {
                 console.log("Access token expired, attempting to refresh");
                 if (await refreshAccessToken()) {
@@ -199,7 +203,11 @@ export const UserProvider: React.FC<UserProviderProps> = ({children}: UserProvid
 
     const isAuthenticated = (): boolean => {
         return user !== null && accessToken !== null;
-    }
+    };
+
+    const isAdmin = (): boolean => {
+        return isAuthenticated() && (user?.admin || false);
+    };
 
     useEffect(() => {
         if (!user || !accessToken) {
@@ -208,7 +216,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({children}: UserProvid
     });
 
     return (
-        <UserContext.Provider value={{user, register, login, logout, fetchWithAuth, isAuthenticated}}>
+        <UserContext.Provider value={{user, register, login, logout, fetchWithAuth, isAuthenticated, isAdmin}}>
             {children}
         </UserContext.Provider>
     );

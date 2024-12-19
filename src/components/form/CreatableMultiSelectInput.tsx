@@ -8,6 +8,7 @@ export default function CreatableMultiSelectInput({
                                                       id,
                                                       label,
                                                       placeholderText,
+                                                      defaultOptions = [],
                                                       predefinedOptions = [],
                                                       required,
                                                       errors,
@@ -17,6 +18,7 @@ export default function CreatableMultiSelectInput({
     id: string;
     label: string;
     placeholderText: string;
+    defaultOptions?: Option[];
     predefinedOptions?: Option[];
     required: boolean;
     errors: any;
@@ -28,16 +30,16 @@ export default function CreatableMultiSelectInput({
             rules={{
                 required
             }}
-            render={({field: {onChange, onBlur, value}}) => (
+            render={({field: {onChange, onBlur}}) => (
                 <Input
                     classPrefix={classPrefix}
                     id={id}
                     label={label}
                     placeholderText={placeholderText}
+                    defaultOptions={defaultOptions}
                     predefinedOptions={predefinedOptions}
                     onChange={onChange}
                     onBlur={onBlur}
-                    value={value}
                     errors={errors}
                 />
             )}
@@ -46,24 +48,37 @@ export default function CreatableMultiSelectInput({
     );
 }
 
-function Input({classPrefix, id, label, placeholderText, predefinedOptions = [], errors, onChange, onBlur, value}: {
+function Input({
+                   classPrefix,
+                   id,
+                   label,
+                   placeholderText,
+                   defaultOptions = [],
+                   predefinedOptions = [],
+                   errors,
+                   onChange,
+                   onBlur
+               }: {
     classPrefix: string;
     id: string;
     label: string;
     placeholderText: string;
+    defaultOptions?: Option[];
     predefinedOptions?: Option[];
     errors: any;
     onChange?: (selected: Option[]) => void;
     onBlur?: () => void;
-    value?: Option[];
 }) {
     const prefix: string = classPrefix ? `${classPrefix}__` : "";
 
-    const [selected, setSelected] = useState<Option[]>([]);
+    const [selected, setSelected] = useState<Option[]>(defaultOptions ? defaultOptions : []);
+    useEffect(() => {
+        setSelected(defaultOptions ? defaultOptions : []);
+    }, [defaultOptions]);
+
     const [optionsToDisplay, setOptionsToDisplay] = useState<Option[]>([]);
     const [inputActive, setInputActive] = useState<boolean>(false);
     const [inputText, setInputText] = useState<string>("");
-
 
     const selectOption = (option: Option): void => {
         if (onChange) {
@@ -143,6 +158,7 @@ function Input({classPrefix, id, label, placeholderText, predefinedOptions = [],
                     {optionsToDisplay.map((option: Option) => (
                         <button key={option.value}
                                 className="option"
+                                type="button"
                                 onClick={() => {
                                     selectOption(option);
                                     setInputText("");

@@ -1,13 +1,15 @@
 import "./project-form.scss";
 import {SubmitHandler, useForm} from "react-hook-form";
-import CreatableMultiSelectInput
-    from "../../../components/form/CreatableMultiSelectInput.tsx";
+import CreatableMultiSelectInput from "../../../components/form/CreatableMultiSelectInput.tsx";
 import SelectInput from "../../../components/form/SelectInput.tsx";
 import TextInput from "../../../components/form/TextInput.tsx";
 import BooleanInput from "../../../components/form/BooleanInput.tsx";
 import DateInput from "../../../components/form/DateInput.tsx";
 import URLInput from "../../../components/form/URLInput.tsx";
 import {Option} from "../../../scripts/types.ts";
+import {useUser} from "../../../contexts/UserContext.tsx";
+import {useData} from "../../../contexts/DataContext.tsx";
+import {mapToProjectData} from "../../../scripts/fetchers.ts";
 
 export default function ProjectUploadForm({tagOptions, techOptions}: {
     tagOptions: Option[];
@@ -17,16 +19,44 @@ export default function ProjectUploadForm({tagOptions, techOptions}: {
         register,
         control,
         handleSubmit,
+        reset,
         formState: {errors},
     } = useForm<ProjectInputs>();
+    const {fetchWithAuth} = useUser();
+    const {addProject} = useData();
 
     const onSubmit: SubmitHandler<ProjectInputs> = (data: ProjectInputs): void => {
-        console.log(data);
+        fetchWithAuth("projects", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: data.name,
+                description: data.description,
+                url: data.url,
+                image_url: data.image_url,
+                source_code_url: data.source_code_url,
+                type: data.type,
+                status: data.status,
+                featured: data.featured,
+                begin_date: data.begin_date,
+                completion_date: data.completion_date,
+                tags: data.tags.map((option: Option): string => option.label),
+                tech: data.tech.map((option: Option): string => option.label),
+            })
+        }).then(async res => {
+            if (res.ok) {
+                const json = await res.json();
+                addProject(mapToProjectData(json));
+                reset();
+            }
+        }).catch(err => console.error(err));
     };
 
     return (
         <form className="project-form generic-form" onSubmit={handleSubmit(onSubmit)}>
-            <h1>Project</h1>
+            <h1>Upload Project</h1>
             <TextInput classPrefix={"project-form"}
                        id={"name"}
                        label={"Name"}
@@ -72,7 +102,8 @@ export default function ProjectUploadForm({tagOptions, techOptions}: {
                          label={"Type"}
                          options={[
                              {label: "Personal", value: "personal"},
-                             {label: "Commission", value: "commission"}
+                             {label: "Commission", value: "commission"},
+                             {label: "Other", value: "other"}
                          ]}
                          required={true}
                          register={register}
@@ -129,6 +160,13 @@ export default function ProjectUploadForm({tagOptions, techOptions}: {
                                        errors={errors}
                                        control={control}
             />
+            <TextInput classPrefix={"hidden"}
+                       id={"na"}
+                       label={"na"}
+                       required={false}
+                       register={register}
+                       errors={errors}
+            />
 
             <div className="project-form__input-container">
                 <label className="transparent" htmlFor="submit">Upload Project</label>
@@ -149,6 +187,6 @@ type ProjectInputs = {
     featured: boolean
     begin_date: Date
     completion_date: Date
-    tags: string[]
-    tech: string[]
+    tags: Option[]
+    tech: Option[]
 };

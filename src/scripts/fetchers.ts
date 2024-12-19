@@ -1,19 +1,23 @@
 import {formatDateToYYYYMMDD} from "./utils.ts";
 import {ProjectData, SocialLinkData, TagData} from "./types.ts";
 
-export function fetchProjects(): Promise<ProjectData[]> {
-    const mapToProjectData = (jsonData: any[]): ProjectData[] => {
-        return jsonData.map((item) => ({
-            ...item,
-            tech: item.tags.filter((tag: TagData) => tag.is_tech),
-            begin_date: formatDateToYYYYMMDD(item.begin_date),
-            completion_date: item.completion_date === null ? null : formatDateToYYYYMMDD(item.completion_date),
-        }));
+export const mapToProjectDataArray = (jsonData: any[]): ProjectData[] => {
+    return jsonData.map((item): ProjectData => mapToProjectData(item));
+};
+export const mapToProjectData = (item: any): ProjectData => {
+    return {
+        ...item,
+        tech: item.tags.filter((tag: TagData) => tag.is_tech),
+        begin_date: formatDateToYYYYMMDD(item.begin_date),
+        completion_date: item.completion_date === null ? null : formatDateToYYYYMMDD(item.completion_date),
     };
+};
+
+export function fetchProjects(): Promise<ProjectData[]> {
 
     return fetchApi("/projects")
         .then((response: Response) => response.json())
-        .then((json): ProjectData[] => mapToProjectData(json))
+        .then((json): ProjectData[] => mapToProjectDataArray(json))
         .catch(error => {
             console.error(error);
             return [];

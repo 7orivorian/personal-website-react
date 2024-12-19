@@ -1,7 +1,8 @@
-export default function URLInput({classPrefix, id, label, placeholder, required, register, errors}: {
+export default function URLInput({classPrefix, id, label, defaultValue, placeholder, required, register, errors}: {
     classPrefix: string;
     id: string;
     label: string;
+    defaultValue?: string | undefined;
     placeholder?: string | undefined;
     required: boolean;
     register: any;
@@ -16,6 +17,7 @@ export default function URLInput({classPrefix, id, label, placeholder, required,
             </label>
             <input id={id}
                    type={"url"}
+                   defaultValue={defaultValue}
                    autoComplete={"off"}
                    placeholder={placeholder}
                    className={errors[id] ? "error" : ""}

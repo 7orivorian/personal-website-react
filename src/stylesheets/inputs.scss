@@ -1,6 +1,7 @@
 .generic-form {
   select,
   input[type="text"]:not(.creatable-input__input),
+  input[type="search"],
   input[type="url"],
   input[type="date"] {
     all: unset;
@@ -18,15 +19,15 @@
 
     transition: all 0.15s ease;
 
-    &:hover,
-    &:focus {
+    &:hover:not(:disabled),
+    &:focus:not(:disabled) {
       background-color: var(--complement-50);
       border-left: 2px solid var(--complement);
       border-right: 2px solid var(--complement);
       box-shadow: 0 0 5px var(--complement-75);
     }
 
-    &:focus {
+    &:focus:not(:disabled) {
       border: 2px solid var(--complement);
     }
 
@@ -43,6 +44,11 @@
       &:hover {
         filter: invert(40%) sepia(50%) saturate(200%) hue-rotate(180deg) brightness(90%) contrast(85%);
       }
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
     }
   }
 
@@ -89,16 +95,21 @@
 
     transition: all 0.15s ease;
 
-    &:hover,
-    &:focus {
+    &:hover:not(:disabled),
+    &:focus:not(:disabled) {
       background-color: var(--complement-50);
       border-left: 2px solid var(--complement);
       border-right: 2px solid var(--complement);
       box-shadow: 0 0 5px var(--complement-75);
     }
 
-    &:focus {
+    &:focus:not(:disabled) {
       border: 2px solid var(--complement);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
     }
   }
 

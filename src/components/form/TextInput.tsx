@@ -2,6 +2,7 @@ export default function TextInput({
                                       classPrefix,
                                       id,
                                       label,
+                                      defaultValue,
                                       placeholder,
                                       minLength,
                                       maxLength,
@@ -12,6 +13,7 @@ export default function TextInput({
     classPrefix: string;
     id: string;
     label: string;
+    defaultValue?: string | undefined;
     placeholder?: string | undefined;
     minLength?: number | undefined;
     maxLength?: number | undefined;
@@ -30,13 +32,11 @@ export default function TextInput({
                    type={"text"}
                    autoComplete={"off"}
                    placeholder={placeholder}
+                   defaultValue={defaultValue}
                    minLength={minLength}
                    maxLength={maxLength}
                    className={errors[id] ? "error" : ""}
-                   {...register(`${id}`, {
-                       required: required
-
-                   })}
+                   {...register(`${id}`, {required: required})}
             />
             {errors[id] && <span className="error">{errors[id].message}</span>}
         </div>

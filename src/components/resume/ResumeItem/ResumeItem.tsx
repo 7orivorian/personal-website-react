@@ -1,6 +1,6 @@
 import "./resume-item.scss";
 import {useState} from "react";
-import {capitalizeFirstLetter, handleUrlClick} from "../../../scripts/utils.ts";
+import {capitalize, handleUrlClick} from "../../../scripts/utils.ts";
 import OpenInNewIcon from "../../icon/material/OpenInNewIcon.tsx";
 import {getMatchingTags} from "../../../scripts/search_utils.ts";
 import {ProjectData, TagData} from "../../../scripts/types.ts";
@@ -37,7 +37,7 @@ export default function ResumeItem({project, searchTerms, handleTagClick}: {
             </div>
             <div className="resume-item__minor-details">
                 <>
-                    <p className="resume-item__project-type resume-item__date">{capitalizeFirstLetter(project.type)}</p>
+                    <p className="resume-item__project-type resume-item__date">{capitalize(project.type)}</p>
                     <div className="resume-item__date-container">
                         <p className="resume-item__begin-date resume-item__date">{project.begin_date}</p>
                         <p className="resume-item__date-sep resume-item__date">—</p>

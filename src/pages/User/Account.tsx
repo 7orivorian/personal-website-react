@@ -4,7 +4,7 @@ import FadeInSection from "../../components/FadeInSection/FadeInSection.tsx";
 import {useNavigate} from "react-router-dom";
 
 export default function Account() {
-    const {user, fetchWithAuth, isAuthenticated} = useUser();
+    const {user, fetchWithAuth, isAuthenticated, isAdmin, logout} = useUser();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -32,8 +32,14 @@ export default function Account() {
                     <p className="current-user-is-admin">
                         user.admin: {user?.admin ? "true" : "false"}
                     </p>
+                    <button onClick={logout}>Logout</button>
                 </div>
             </FadeInSection>
+            {isAdmin() && (
+                <FadeInSection>
+                    <button onClick={() => navigate('/admin')}>Admin Panel</button>
+                </FadeInSection>
+            )}
         </>
     );
 }
