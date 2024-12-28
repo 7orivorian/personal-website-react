@@ -4,7 +4,7 @@ The frontend of my personal website, built with Vite, React, TypeScript, &
 Sass. The backend can be
 found [here](https://github.com/7orivorian/personal-backend).
 
-> ![NOTE]
+> [!NOTE]
 > This site is a WIP and is currently very ugly (but functional!) due to school
 > requirements.
 
