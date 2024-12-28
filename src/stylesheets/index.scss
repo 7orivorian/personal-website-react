@@ -169,7 +169,7 @@ a:not(.fancy-link) {
 
   margin: auto;
 
-  width: 50%;
+  width: fit-content;
   max-width: var(--content-width);
 
   color: var(--text);

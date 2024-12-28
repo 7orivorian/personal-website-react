@@ -1,3 +1,5 @@
+@import '../../../stylesheets/vars.scss';
+
 .resume-item {
   position: relative;
   display: flex;
@@ -7,7 +9,7 @@
 
   padding: 5px 10px;
 
-  width: 100%;
+  width: 20rem;
 
   border-top: 2px solid var(--accent);
   border-radius: var(--border-radius);
@@ -36,6 +38,12 @@
 
     &:active {
       box-shadow: 0 0 30px var(--complement-75);
+    }
+  }
+
+  & {
+    @media (max-width: $width-breakpoint) {
+      width: 100%;
     }
   }
 }

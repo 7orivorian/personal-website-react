@@ -1,5 +1,5 @@
-import React from "react";
 import "./list-card.scss";
+import React from "react";
 
 interface ListCardProps {
     header: string;

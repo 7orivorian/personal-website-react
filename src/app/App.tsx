@@ -18,8 +18,6 @@ import {DataProvider} from "../contexts/DataContext.tsx";
 import Account from "../pages/User/Account.tsx";
 
 export default function App() {
-    const contentWidth: string = "1200px";
-
     const [isProfileImgAnimating, setIsProfileImgAnimating] = useState(false);
 
     const profileClickHandler = (): void => {
@@ -30,12 +28,6 @@ export default function App() {
     const pageContainerRef = useRef(null);
 
     useEffect(() => {
-        // @ts-expect-error is not null
-        const content = pageContainerRef.current.querySelector('.bottom-content');
-        if (content) {
-            content.style.setProperty("--content-width", contentWidth);
-        }
-
         if (isMobileDevice()) {
             let targetX: number = Math.random() * window.innerWidth;
             let targetY: number = Math.random() * window.innerHeight;
