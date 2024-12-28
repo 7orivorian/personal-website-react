@@ -88,7 +88,7 @@ export default function App() {
                 pageContainer.removeEventListener("mousemove", handleMouseMove);
             };
         }
-    }, [contentWidth]);
+    }, []);
 
     return (
         <ErrorBoundary>
@@ -118,9 +118,11 @@ export default function App() {
                                     <Route path='/links' element={<Links/>}/>
                                     <Route path='/playground' element={<Playground/>}/>
                                     <Route path='/resume' element={<Resume/>}/>
-                                    <Route path='/auth' element={<Auth/>}/>
                                     <Route path='/admin' element={<Admin/>}/>
-                                    <Route path='/account' element={<Account/>}/>
+                                    <Route path='/user'>
+                                        <Route path='auth' element={<Auth/>}/>
+                                        <Route path='account' element={<Account/>}/>
+                                    </Route>
                                     <Route path='*' element={<ErrorPage/>}/>
                                 </Routes>
                                 <ScrollToTop/>

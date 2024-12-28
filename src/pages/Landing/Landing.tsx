@@ -4,10 +4,8 @@ import {handleUrlClick} from "../../scripts/utils.ts";
 import CardSection from "../../components/cards/CardSection/CardSection.tsx";
 import FadeInSection from "../../components/FadeInSection/FadeInSection.tsx";
 import CoverImageCard from "../../components/cards/CoverImageCard/CoverImageCard.tsx";
-import {useUser} from "../../contexts/UserContext.tsx";
 
 export default function Landing() {
-    const {isAuthenticated} = useUser();
     const navigate = useNavigate();
 
     return (
@@ -56,14 +54,6 @@ export default function Landing() {
                         complete my Minecraft UI animation library.
                     </p>
                 </div>
-            </FadeInSection>
-
-            <FadeInSection>
-                {isAuthenticated() ? (
-                    <button onClick={() => navigate('/account')}>Account</button>
-                ) : (
-                    <button onClick={() => navigate('/auth')}>Login/Register</button>
-                )}
             </FadeInSection>
         </>
     );

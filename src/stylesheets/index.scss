@@ -241,6 +241,9 @@ a:not(.fancy-link) {
 
 svg {
   fill: currentColor;
+  margin: auto;
+  width: inherit;
+  height: inherit;
 }
 
 .transparent {
