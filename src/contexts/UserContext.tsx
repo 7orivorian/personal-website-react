@@ -15,7 +15,7 @@ export type UserDetails = {
 
 export interface UserContextData {
     user: UserDetails | null;
-    register: (username: string, password: string, email: string, admin: boolean) => Promise<string | null>;
+    register: (username: string, password: string, email: string) => Promise<string | null>;
     login: (username: string, password: string) => Promise<string | null>;
     logout: () => Promise<string | null>;
     fetchWithAuth: (endpoint: string, options?: any) => Promise<any>;
@@ -76,7 +76,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({children}: UserProvid
         setAccessToken(json.csrf_access_token);
     }
 
-    const register = async (username: string, password: string, email: string, admin: boolean): Promise<string | null> => {
+    const register = async (username: string, password: string, email: string): Promise<string | null> => {
         try {
             const res = await fetch(`${import.meta.env.VITE_API_URL}/users`, {
                 method: "POST",
@@ -87,7 +87,6 @@ export const UserProvider: React.FC<UserProviderProps> = ({children}: UserProvid
                     email: email,
                     username: username,
                     password: password,
-                    is_admin: admin,
                 }),
                 credentials: "include"
             });

@@ -4,7 +4,6 @@ import {useState} from "react";
 import EmailInput from "../../../components/form/EmailInput.tsx";
 import UsernameInput from "../../../components/form/UsernameInput.tsx";
 import PasswordInput from "../../../components/form/PasswordInput.tsx";
-import BooleanInput from "../../../components/form/BooleanInput.tsx";
 import {useNavigate} from "react-router-dom";
 import {useUser} from "../../../contexts/UserContext.tsx";
 
@@ -26,7 +25,7 @@ export default function Register() {
         }
         setPasswordError(null);
 
-        registerUser(data.username, data.password, data.email, data.admin).then((error: string | null): string | null => {
+        registerUser(data.username, data.password, data.email).then((error: string | null): string | null => {
             if (error) {
                 navigate('/auth?type=login');
                 alert(error);
@@ -34,7 +33,7 @@ export default function Register() {
             }
             navigate('/');
             return null;
-        })
+        });
     }
 
     return (
@@ -54,8 +53,6 @@ export default function Register() {
                 {(errors.passwordConfirm && <span className="error">{errors.passwordConfirm.message}</span>)
                     || (passwordError && <span className="error">{passwordError}</span>)}
             </div>
-            <BooleanInput classPrefix={"auth-form"} id="admin" label={"Admin"} checked={false} register={register}
-                          errors={errors}/>
 
             <div className="input-container auth-input">
                 <label className="invisible" htmlFor="register">Register</label>
@@ -70,5 +67,4 @@ type Inputs = {
     username: string;
     password: string;
     passwordConfirm: string;
-    admin: boolean;
 }
