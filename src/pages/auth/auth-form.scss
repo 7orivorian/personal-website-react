@@ -1,9 +1,14 @@
 $form-width: 500px;
 
 .auth-form {
-  padding: 50px 100px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 
-  width: $form-width;
+  margin: 0 auto;
+  padding: 50px 0;
+
+  width: 80%;
   height: 600px;
 
   transition: inherit;

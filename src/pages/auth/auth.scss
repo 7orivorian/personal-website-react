@@ -7,7 +7,7 @@ $container-height: 700px;
   margin: 50px auto auto;
   padding-bottom: 50px;
 
-  width: $form-width;
+  width: 100%;
   height: $container-height;
 
   border-radius: var(--border-radius);
@@ -26,10 +26,13 @@ $container-height: 700px;
 }
 
 .carrier {
-  position: absolute;
-  display: flex;
+  position: relative;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   flex-direction: row;
 
+  width: 200%;
   height: fit-content;
 
   overflow: hidden;
@@ -37,7 +40,7 @@ $container-height: 700px;
   transition: all 0.25s ease;
 
   &.register {
-    transform: translateX(-$form-width);
+    transform: translateX(-50%);
   }
 }
 
