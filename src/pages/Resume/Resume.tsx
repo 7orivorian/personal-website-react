@@ -1,10 +1,10 @@
 import "./resume.scss";
 import {useEffect, useState} from "react";
 import {useSearchParams} from "react-router-dom";
-import SearchBar from "../../components/SearchBar/SearchBar.tsx";
 import FadeInSection from "../../components/FadeInSection/FadeInSection.tsx";
 import ProjectFilter from "../../components/Dropdown/ProjectFilter/ProjectFilter.tsx";
 import ResumeItemList from "../../components/resume/ResumeItemList/ResumeItemList.tsx";
+import SearchBar from "../../components/SearchBar/SearchBar.tsx";
 
 export default function Resume() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -21,9 +21,9 @@ export default function Resume() {
         }
     }, [query, searchParams, setSearchParams]);
 
-    const handleSearchInputChange = (query: string) => {
-        setQuery(query);
-        setSearchTerms(query.trim().toLowerCase().split(" "));
+    const handleSearchInputChange = (value: string) => {
+        setQuery(value);
+        setSearchTerms(value.trim().toLowerCase().split(" "));
     };
 
     const handleTagClick = (e: MouseEvent, tag: string) => {
@@ -38,11 +38,13 @@ export default function Resume() {
         <>
             <FadeInSection>
                 <div className="buffer"></div>
-                <SearchBar
-                    placeholderText={"Search by skills used..."}
-                    query={query}
-                    setQuery={handleSearchInputChange}
-                />
+                <div className="resume-container__search-bar-container">
+                    <SearchBar
+                        value={query}
+                        onChange={handleSearchInputChange}
+                        placeholderText={"Search by project category or technology used..."}
+                    />
+                </div>
                 <ProjectFilter filterOptions={["ANY", "ALL"]}
                                onFilterChange={(option: string): void => setSearchFilter(option)}/>
 

@@ -10,7 +10,7 @@ export default function ResumeItem({project, searchTerms, handleTagClick}: {
     searchTerms: string[];
     handleTagClick: (e: MouseEvent, query: string) => void
 }) {
-    const [tagsSelected, setTagsSelected] = useState(true);
+    const [techSelected, setTechSelected] = useState(false);
     return (
         <div className="resume-item" key={project.slug}>
             <div className="resume-item__details">
@@ -24,15 +24,15 @@ export default function ResumeItem({project, searchTerms, handleTagClick}: {
                 <p className="resume-item__desc">{project.description}</p>
                 <div className="resume-item__tag-buttons">
                     <button
-                        className={`resume-item__tag-button left ${tagsSelected ? "selected" : ""}`}
-                        onClick={(): void => setTagsSelected(true)}>Tags
+                        className={`resume-item__tag-button left ${!techSelected ? "selected" : ""}`}
+                        onClick={(): void => setTechSelected(false)}>Category
                     </button>
                     <button
-                        className={`resume-item__tag-button right ${!tagsSelected ? "selected" : ""}`}
-                        onClick={(): void => setTagsSelected(false)}>Tech
+                        className={`resume-item__tag-button right ${techSelected ? "selected" : ""}`}
+                        onClick={(): void => setTechSelected(true)}>Technology
                     </button>
                 </div>
-                <TagList tags={tagsSelected ? project.tags : project.tech} searchTerms={searchTerms}
+                <TagList tags={techSelected ? project.tech : project.tags} searchTerms={searchTerms}
                          handleTagClick={handleTagClick}/>
             </div>
             <div className="resume-item__minor-details">
