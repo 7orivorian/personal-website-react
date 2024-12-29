@@ -12,7 +12,6 @@ export default function Account() {
             navigate("/user/auth?type=login");
             return;
         }
-        fetchWithAuth(`test/secured/ping`).then((res) => console.log(res));
     }, [fetchWithAuth, isAuthenticated, navigate]);
 
     return (
