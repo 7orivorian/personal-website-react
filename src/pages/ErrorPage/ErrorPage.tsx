@@ -3,8 +3,14 @@ import {useRouteError} from "react-router-dom";
 import NavItem from "../../components/Navbar/NavItem/NavItem.tsx";
 
 export default function ErrorPage() {
-    // @ts-expect-error ts crying again
-    const {message, status, statusText}: unknown = useRouteError();
+    const error = useRouteError();
+
+    // @ts-expect-error This sometimes does exist, I promise
+    const status = error?.status;
+    // @ts-expect-error This too
+    const statusText = error?.statusText;
+    // @ts-expect-error Also this one
+    const message = error?.message;
 
     return (
         <div id="error-page">
