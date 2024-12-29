@@ -20,7 +20,7 @@ export default function Login() {
                 alert(error);
                 return;
             }
-            navigate('/account');
+            navigate('/user/account');
         });
     };
 

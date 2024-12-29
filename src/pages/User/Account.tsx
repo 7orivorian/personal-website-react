@@ -9,7 +9,7 @@ export default function Account() {
 
     useEffect(() => {
         if (!isAuthenticated()) {
-            navigate("/auth?type=login");
+            navigate("/user/auth?type=login");
             return;
         }
         fetchWithAuth(`test/secured/ping`).then((res) => console.log(res));
