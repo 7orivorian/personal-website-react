@@ -28,7 +28,7 @@ export default function Landing() {
                 <CardSection>
                     <CoverImageCard header={"Resume"} text={"View my digital resume."}
                                     imgUrl={"../../../public/images/resume_img_.png"}
-                                    clickHandler={() => navigate(import.meta.env.VITE_RESUME_ROUTE)}
+                                    clickHandler={() => navigate('/resume')}
                     />
                     <CoverImageCard header={"GitHub"} text={"Browse my GitHub profile."}
                                     imgUrl={"../../../public/images/github_img_.png"}
@@ -36,7 +36,7 @@ export default function Landing() {
                     />
                     <CoverImageCard header={"Playground"} text={"Explore web games I've created."}
                                     imgUrl={"../../../public/images/controller_img_.png"}
-                                    clickHandler={() => navigate(import.meta.env.VITE_PLAYGROUND_ROUTE)}
+                                    clickHandler={() => navigate('/playground')}
                     />
                 </CardSection>
             </FadeInSection>

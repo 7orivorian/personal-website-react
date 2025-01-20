@@ -78,7 +78,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({children}: UserProvid
 
     const register = async (username: string, password: string, email: string): Promise<string | null> => {
         try {
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/users`, {
+            const res = await fetch(`${getApiUrl()}/users`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
