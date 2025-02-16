@@ -5,8 +5,8 @@ Sass. The backend can be
 found [here](https://github.com/7orivorian/personal-backend).
 
 > [!NOTE]
-> This site is a WIP and is currently very ugly (but functional!) due to school
-> requirements.
+> This site is currently in a strange state due to issues with Railway, and 
+> isn't actually utilizing the backend at all.
 
 ## Resources
 
