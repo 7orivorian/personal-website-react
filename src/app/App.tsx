@@ -108,7 +108,7 @@ export default function App() {
                         <div className="bottom">
                             <div className="profile-image-container">
                                 <img className={`profile-image ${isProfileImgAnimating ? "do-profile-spin" : ""}`}
-                                     src="../../public/images/profile_img_placeholder.jpg" alt="profile_img"
+                                     src="/images/profile_img_placeholder.jpg" alt="profile_img"
                                      onDoubleClick={profileClickHandler}
                                 />
                             </div>
