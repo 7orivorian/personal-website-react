@@ -30,7 +30,7 @@ export default function ResumeItemList({searchTerms, searchFilter, handleTagClic
                     ))}
                 </div>
             ) || (
-                <p className="resume-container__empty">What have we here?? A skill I don't possess! Nonsense...</p>
+                <p className="resume-container__empty">No results!</p>
             )}
         </>
     );

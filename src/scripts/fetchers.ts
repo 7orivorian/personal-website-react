@@ -1,5 +1,6 @@
 import {formatDateToYYYYMMDD} from "./utils.ts";
 import {ProjectData, SocialLinkData, TagData} from "./types.ts";
+import {getProjects, getSocialLinks} from "./api/db.ts";
 
 export const mapToProjectDataArray = (jsonData: any[]): ProjectData[] => {
     return jsonData.map((item): ProjectData => mapToProjectData(item));
@@ -16,8 +17,9 @@ export const mapToProjectData = (item: any): ProjectData => {
 };
 
 export function fetchProjects(): Promise<ProjectData[]> {
-    return fetchApi("projects")
-        .then((response: Response) => response.json())
+    // return fetchApi("projects")
+    //     .then((response: Response) => response.json())
+    return getProjects()
         .then((json): ProjectData[] => mapToProjectDataArray(json))
         .catch(error => {
             console.error(error);
@@ -26,18 +28,20 @@ export function fetchProjects(): Promise<ProjectData[]> {
 }
 
 export function fetchTags(): Promise<TagData[]> {
-    return fetchApi('tags')
-        .then((response: Response) => response.json())
-        .then((json): TagData[] => json)
-        .catch(error => {
-            console.error(error);
-            return [];
-        });
+    // return fetchApi('tags')
+    //     .then((response: Response) => response.json())
+    //     .then((json): TagData[] => json)
+    //     .catch(error => {
+    //         console.error(error);
+    //         return [];
+    //     });
+    return Promise.resolve([]);
 }
 
 export function fetchSocialLinks(): Promise<SocialLinkData[]> {
-    return fetchApi("sociallinks")
-        .then((response: Response) => response.json())
+    // return fetchApi("sociallinks")
+    //     .then((response: Response) => response.json())
+    return getSocialLinks()
         .then((json): SocialLinkData[] => json)
         .catch(error => {
             console.error(error);

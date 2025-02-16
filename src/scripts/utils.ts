@@ -1,4 +1,4 @@
-export const handleUrlClick = (url: string | undefined): void => {
+export const handleUrlClick = (url: string | null | undefined): void => {
     if (url) {
         const newWindow: Window | null = window.open(url, '_blank', 'noopener,noreferrer');
         if (newWindow) {

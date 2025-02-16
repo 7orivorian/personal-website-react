@@ -3,9 +3,9 @@ export type ProjectData = {
     slug: string;
     name: string;
     description: string;
-    url: string;
-    image_url: string;
-    source_code_url: string;
+    url: string | null;
+    image_url: string | null;
+    source_code_url: string | null;
     type: string;
     status: string;
     featured: boolean;
