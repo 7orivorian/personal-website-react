@@ -103,13 +103,6 @@ export function getProjects(): Promise<any[]> {
                 },
                 {
                     "created_at": "Mon, 13 Jan 2025 15:22:03 GMT",
-                    "id": 11,
-                    "is_tech": true,
-                    "name": "JitPack",
-                    "updated_at": "Mon, 13 Jan 2025 15:22:03 GMT"
-                },
-                {
-                    "created_at": "Mon, 13 Jan 2025 15:22:03 GMT",
                     "id": 12,
                     "is_tech": true,
                     "name": "JUnit",
@@ -152,13 +145,6 @@ export function getProjects(): Promise<any[]> {
                     "id": 10,
                     "is_tech": true,
                     "name": "Maven",
-                    "updated_at": "Mon, 13 Jan 2025 15:22:03 GMT"
-                },
-                {
-                    "created_at": "Mon, 13 Jan 2025 15:22:03 GMT",
-                    "id": 11,
-                    "is_tech": true,
-                    "name": "JitPack",
                     "updated_at": "Mon, 13 Jan 2025 15:22:03 GMT"
                 },
                 {
